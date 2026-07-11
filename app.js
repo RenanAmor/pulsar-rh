@@ -28,7 +28,7 @@ loginForm.addEventListener('submit', (event) => {
     return;
   }
 
-  alert('HumanIA RH — Login funcionando.');
+  alert('Pulsar RH — Login funcionando.');
 });
 
 forgotPassword.addEventListener('click', () => {
