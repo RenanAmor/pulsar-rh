@@ -2,18 +2,28 @@
 
 spl_autoload_register(function ($class) {
 
-    $prefix = 'App\\';
+    $prefixes = [
 
-    if (strpos($class, $prefix) !== 0) {
-        return;
-    }
+        'App\\'      => __DIR__ . '/',
+        'Database\\' => __DIR__ . '/../database/',
 
-    $relativeClass = substr($class, strlen($prefix));
+    ];
 
-    $file = __DIR__ . '/' . str_replace('\\', '/', $relativeClass) . '.php';
+    foreach ($prefixes as $prefix => $baseDir) {
 
-    if (file_exists($file)) {
-        require_once $file;
+        if (strpos($class, $prefix) !== 0) {
+            continue;
+        }
+
+        $relative = substr($class, strlen($prefix));
+
+        $file = $baseDir . str_replace('\\', '/', $relative) . '.php';
+
+        if (file_exists($file)) {
+            require_once $file;
+            return;
+        }
+
     }
 
 });
