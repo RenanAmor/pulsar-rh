@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 *{
     margin:0;
@@ -7,240 +7,163 @@
 }
 
 body{
-
     font-family:'Inter',sans-serif;
-
-    background:#071426;
-
-    color:#fff;
-
+    background:linear-gradient(135deg,#030712,#071426,#0b1f38);
+    min-height:100vh;
+    overflow:hidden;
 }
 
 .login-page{
-
     display:flex;
-
     min-height:100vh;
+}
 
+.background-particles{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 15% 15%,rgba(212,175,55,.10),transparent 20%),
+        radial-gradient(circle at 85% 20%,rgba(212,175,55,.08),transparent 18%),
+        radial-gradient(circle at 75% 80%,rgba(212,175,55,.10),transparent 20%),
+        radial-gradient(circle at 20% 75%,rgba(212,175,55,.08),transparent 20%);
+    z-index:-1;
 }
 
 .left-panel{
-
     flex:1;
-
     display:flex;
-
-    justify-content:center;
-
     align-items:center;
-
-    padding:80px;
-
-    background:
-        radial-gradient(circle at 15% 20%,rgba(255,215,0,.10),transparent 35%),
-        radial-gradient(circle at 80% 70%,rgba(255,215,0,.08),transparent 35%),
-        linear-gradient(140deg,#071426,#0d2038);
-
+    justify-content:center;
+    padding:90px;
 }
 
-.content{
-
+.brand{
     max-width:520px;
-
 }
 
 .logo{
-
     width:90px;
-
     height:90px;
-
-    border-radius:20px;
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,215,0,.35);
-
+    border-radius:22px;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    font-size:42px;
-
-    font-weight:700;
-
-    color:#FFD700;
-
+    border:1px solid rgba(212,175,55,.5);
+    background:rgba(255,255,255,.05);
     margin-bottom:35px;
-
 }
 
-h1{
-
-    font-size:58px;
-
+.logo span{
+    color:#D4AF37;
+    font-size:42px;
     font-weight:700;
+}
 
+.brand h1{
+    color:#fff;
+    font-size:64px;
     margin-bottom:20px;
-
 }
 
-.subtitle{
-
-    font-size:22px;
-
-    color:#d7d7d7;
-
-    line-height:1.6;
-
+.brand h2{
+    color:#f0d67d;
+    font-weight:400;
+    margin-bottom:30px;
 }
 
-.line{
-
-    width:80px;
-
+.gold-line{
+    width:90px;
     height:3px;
-
-    background:#FFD700;
-
-    margin:40px 0;
-
+    background:#D4AF37;
+    margin-bottom:30px;
 }
 
-.description{
-
-    color:#b7c1ca;
-
-    line-height:1.9;
-
+.brand p{
+    color:#c9d2da;
+    line-height:1.8;
     font-size:18px;
-
 }
 
 .right-panel{
-
-    width:480px;
-
-    background:white;
-
+    width:520px;
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
-    padding:50px;
-
+    padding:40px;
 }
 
 .login-card{
-
     width:100%;
-
+    padding:45px;
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(20px);
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.10);
 }
 
-.login-card h2{
+.login-card small{
+    color:#D4AF37;
+    letter-spacing:2px;
+}
 
-    color:#071426;
-
-    font-size:38px;
-
-    margin-bottom:10px;
-
+.login-card h3{
+    color:#fff;
+    font-size:42px;
+    margin:18px 0;
 }
 
 .login-card p{
-
-    color:#777;
-
-    margin-bottom:40px;
-
+    color:#c9d2da;
+    margin-bottom:35px;
 }
 
 label{
-
     display:block;
-
+    color:#fff;
     margin-bottom:8px;
-
-    color:#444;
-
-    font-weight:600;
-
 }
 
 input{
-
     width:100%;
-
     height:56px;
-
     margin-bottom:22px;
-
-    border:1px solid #d8d8d8;
-
-    border-radius:10px;
-
-    padding:0 16px;
-
-    font-size:16px;
-
+    border:none;
+    border-radius:12px;
+    padding:0 18px;
+    background:rgba(255,255,255,.08);
+    color:#fff;
     outline:none;
-
 }
 
-input:focus{
-
-    border-color:#FFD700;
-
+input::placeholder{
+    color:#b8c3cf;
 }
 
 button{
-
     width:100%;
-
     height:58px;
-
     border:none;
-
-    border-radius:10px;
-
-    background:#FFD700;
-
-    color:#071426;
-
+    border-radius:12px;
+    background:#D4AF37;
+    color:#111;
     font-size:18px;
-
     font-weight:700;
-
     cursor:pointer;
-
-    transition:.25s;
-
+    transition:.3s;
 }
 
 button:hover{
-
     transform:translateY(-2px);
-
-    box-shadow:0 12px 30px rgba(0,0,0,.20);
-
 }
 
-@media(max-width:900px){
+@media(max-width:980px){
 
-    .left-panel{
+.left-panel{
+display:none;
+}
 
-        display:none;
-
-    }
-
-    .right-panel{
-
-        width:100%;
-
-    }
+.right-panel{
+width:100%;
+}
 
 }

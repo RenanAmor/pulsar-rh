@@ -17,36 +17,48 @@
 
 <div class="login-page">
 
-    <div class="left-panel">
+    <div class="background-particles"></div>
 
-        <div class="content">
+    <section class="left-panel">
+
+        <div class="brand">
 
             <div class="logo">
-                P
+                <span>P</span>
             </div>
 
             <h1>Pulsar RH</h1>
 
-            <p class="subtitle">
+            <h2>
                 Inteligência para gestão de pessoas.
-            </p>
+            </h2>
 
-            <div class="line"></div>
+            <div class="gold-line"></div>
 
-            <p class="description">
-                Um sistema moderno para recrutamento, desenvolvimento humano e gestão inteligente.
+            <p>
+
+                Plataforma desenvolvida para transformar
+                recrutamento, avaliação comportamental,
+                desempenho e desenvolvimento humano
+                em uma única experiência inteligente.
+
             </p>
 
         </div>
-    </div>
 
-    <div class="right-panel">
+    </section>
+
+    <section class="right-panel">
 
         <div class="login-card">
 
-            <h2>Entrar</h2>
+            <small>ACESSO AO SISTEMA</small>
 
-            <p>Bem-vindo ao Pulsar RH</p>
+            <h3>Bem-vindo</h3>
+
+            <p>
+                Entre com suas credenciais para continuar.
+            </p>
 
             <form>
 
@@ -74,9 +86,11 @@
 
         </div>
 
-    </div>
+    </section>
 
 </div>
+
+<script src="/js/particles.js"></script>
 
 </body>
 
