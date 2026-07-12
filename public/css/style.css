@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:#071426;
+
+    color:#fff;
+
+}
+
+.login-page{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+.left-panel{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:80px;
+
+    background:
+        radial-gradient(circle at 15% 20%,rgba(255,215,0,.10),transparent 35%),
+        radial-gradient(circle at 80% 70%,rgba(255,215,0,.08),transparent 35%),
+        linear-gradient(140deg,#071426,#0d2038);
+
+}
+
+.content{
+
+    max-width:520px;
+
+}
+
+.logo{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,215,0,.35);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#FFD700;
+
+    margin-bottom:35px;
+
+}
+
+h1{
+
+    font-size:58px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.subtitle{
+
+    font-size:22px;
+
+    color:#d7d7d7;
+
+    line-height:1.6;
+
+}
+
+.line{
+
+    width:80px;
+
+    height:3px;
+
+    background:#FFD700;
+
+    margin:40px 0;
+
+}
+
+.description{
+
+    color:#b7c1ca;
+
+    line-height:1.9;
+
+    font-size:18px;
+
+}
+
+.right-panel{
+
+    width:480px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px;
+
+}
+
+.login-card{
+
+    width:100%;
+
+}
+
+.login-card h2{
+
+    color:#071426;
+
+    font-size:38px;
+
+    margin-bottom:10px;
+
+}
+
+.login-card p{
+
+    color:#777;
+
+    margin-bottom:40px;
+
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#444;
+
+    font-weight:600;
+
+}
+
+input{
+
+    width:100%;
+
+    height:56px;
+
+    margin-bottom:22px;
+
+    border:1px solid #d8d8d8;
+
+    border-radius:10px;
+
+    padding:0 16px;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+input:focus{
+
+    border-color:#FFD700;
+
+}
+
+button{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#FFD700;
+
+    color:#071426;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.20);
+
+}
+
+@media(max-width:900px){
+
+    .left-panel{
+
+        display:none;
+
+    }
+
+    .right-panel{
+
+        width:100%;
+
+    }
+
+}
