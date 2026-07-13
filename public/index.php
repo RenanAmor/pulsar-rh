@@ -8,48 +8,71 @@ use App\Controllers\AuthController;
 use App\Controllers\DashboardController;
 use App\Controllers\UserController;
 
-$base = '/humania-rh/public';
+$base = BASE_URL;
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-if (str_starts_with($path, $base)) {
+if ($base !== '' && str_starts_with($path, $base)) {
     $path = substr($path, strlen($base));
 }
 
-if ($path === '') {
-    $path = '/';
-}
+$path = $path ?: '/';
 
 switch ($path) {
 
     case '/':
 
-        $controller = new AuthController();
-        echo $controller->login();
+        echo (new AuthController())->login();
         break;
 
     case '/dashboard':
 
-        $controller = new DashboardController();
-        echo $controller->index();
+        echo (new DashboardController())->index();
         break;
 
     case '/users':
 
-        $controller = new UserController();
-        echo $controller->index();
+        echo (new UserController())->index();
+        break;
+
+    case '/users/create':
+
+        echo (new UserController())->create();
+        break;
+
+    case '/users/store':
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new UserController())->store();
+        }
+        break;
+
+    case '/users/edit':
+
+        echo (new UserController())->edit();
+        break;
+
+    case '/users/update':
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new UserController())->update();
+        }
+        break;
+
+    case '/users/delete':
+
+        (new UserController())->delete();
         break;
 
     case '/logout':
 
-        $controller = new AuthController();
-        $controller->logout();
+        (new AuthController())->logout();
         break;
 
     default:
 
         http_response_code(404);
+
         echo "<h1>404</h1>";
         echo "<p>Página não encontrada.</p>";
-        break;
 }

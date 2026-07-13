@@ -20,7 +20,7 @@ class UserService
 
     public function find(int $id): ?array
     {
-        return $this->repository->findById($id);
+        return $this->repository->find($id);
     }
 
     public function create(array $data): bool

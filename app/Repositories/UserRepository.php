@@ -25,7 +25,7 @@ class UserRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function findById(int $id): ?array
+    public function find(int $id): ?array
     {
         $stmt = $this->db->prepare("
             SELECT *
@@ -83,11 +83,11 @@ class UserRepository
         ");
 
         return $stmt->execute([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => $data['password'],
-            'role' => $data['role'],
-            'active' => $data['active']
+            'role'     => $data['role'],
+            'active'   => $data['active']
         ]);
     }
 
@@ -104,10 +104,10 @@ class UserRepository
         ");
 
         return $stmt->execute([
-            'id' => $id,
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'role' => $data['role'],
+            'id'     => $id,
+            'name'   => $data['name'],
+            'email'  => $data['email'],
+            'role'   => $data['role'],
             'active' => $data['active']
         ]);
     }

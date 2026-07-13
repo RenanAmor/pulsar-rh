@@ -4,10 +4,9 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Usuários | <?= APP_NAME ?></title>
+    <title>Usuários - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -23,96 +22,80 @@
             <span>P</span>
         </div>
 
-        <h2><?= APP_NAME ?></h2>
+        <h2>Pulsar RH</h2>
 
         <nav>
-
             <a href="<?= BASE_URL ?>/dashboard">Dashboard</a>
-
-            <a href="<?= BASE_URL ?>/users">Usuários</a>
-
-            <a href="#">Empresas</a>
-
-            <a href="#">Vagas</a>
-
-            <a href="#">Candidatos</a>
-
-            <a href="#">Avaliações</a>
-
-            <a href="#">Relatórios</a>
-
-            <a href="#">Configurações</a>
-
+            <a class="active" href="<?= BASE_URL ?>/users">Usuários</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
-
         </nav>
 
     </aside>
 
     <main class="content">
 
-        <header style="display:flex;justify-content:space-between;align-items:center;">
+        <div class="page-header">
 
-            <div>
+            <h1>Usuários</h1>
 
-                <h1>Usuários</h1>
-
-                <p>Gerenciamento de usuários do sistema.</p>
-
-            </div>
-
-            <button>
-
+            <a class="btn-primary" href="<?= BASE_URL ?>/users/create">
                 + Novo Usuário
-
-            </button>
-
-        </header>
-
-        <div class="card">
-
-            <table width="100%" cellpadding="12">
-
-                <thead>
-
-                    <tr>
-
-                        <th align="left">Nome</th>
-                        <th align="left">E-mail</th>
-                        <th align="left">Perfil</th>
-                        <th align="center">Status</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                <?php foreach ($users as $user): ?>
-
-                    <tr>
-
-                        <td><?= htmlspecialchars($user['name']) ?></td>
-
-                        <td><?= htmlspecialchars($user['email']) ?></td>
-
-                        <td><?= ucfirst($user['role']) ?></td>
-
-                        <td align="center">
-
-                            <?= $user['active'] ? '🟢 Ativo' : '🔴 Inativo' ?>
-
-                        </td>
-
-                    </tr>
-
-                <?php endforeach; ?>
-
-                </tbody>
-
-            </table>
+            </a>
 
         </div>
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Perfil</th>
+                    <th>Status</th>
+                    <th width="180">Ações</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            <?php foreach ($users as $user): ?>
+
+                <tr>
+
+                    <td><?= htmlspecialchars($user['name']) ?></td>
+
+                    <td><?= htmlspecialchars($user['email']) ?></td>
+
+                    <td><?= htmlspecialchars($user['role']) ?></td>
+
+                    <td>
+                        <?= $user['active'] ? 'Ativo' : 'Inativo' ?>
+                    </td>
+
+                    <td>
+
+                        <a class="btn-action edit"
+                           href="<?= BASE_URL ?>/users/edit?id=<?= $user['id'] ?>">
+                            ✏️ Editar
+                        </a>
+
+                        <a class="btn-action delete"
+                           href="<?= BASE_URL ?>/users/delete?id=<?= $user['id'] ?>"
+                           onclick="return confirm('Deseja realmente excluir este usuário?')">
+                            🗑️ Excluir
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            <?php endforeach; ?>
+
+            </tbody>
+
+        </table>
 
     </main>
 

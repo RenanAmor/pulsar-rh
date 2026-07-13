@@ -10,7 +10,8 @@ body{
     font-family:'Inter',sans-serif;
     background:linear-gradient(135deg,#030712,#071426,#0b1f38);
     min-height:100vh;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
 .login-page{
@@ -283,4 +284,103 @@ width:100%;
     grid-template-columns:1fr;
 }
 
+}/* ===========================================================
+   USERS
+=========================================================== */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.btn-primary{
+    display:inline-block;
+    padding:12px 20px;
+    background:#D4AF37;
+    color:#111;
+    text-decoration:none;
+    font-weight:600;
+    border-radius:10px;
+    transition:.25s;
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+}
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.table th{
+    background:rgba(212,175,55,.15);
+    color:#D4AF37;
+    text-align:left;
+    padding:18px;
+    font-weight:600;
+}
+
+.table td{
+    color:#ffffff;
+    padding:18px;
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.table tr:hover{
+    background:rgba(255,255,255,.03);
+}select{
+    width:100%;
+    height:56px;
+    margin-bottom:22px;
+    border:none;
+    border-radius:12px;
+    padding:0 18px;
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    outline:none;
+    font-size:16px;
+}
+
+select option{
+    background:#162131;
+    color:#fff;
+}/* ===========================================================
+   BOTÕES DE AÇÃO
+=========================================================== */
+
+.btn-action{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    margin-right:8px;
+    transition:.25s;
+}
+
+.btn-action.edit{
+    background:#D4AF37;
+    color:#111;
+}
+
+.btn-action.edit:hover{
+    transform:translateY(-2px);
+}
+
+.btn-action.delete{
+    background:#c0392b;
+    color:#fff;
+}
+
+.btn-action.delete:hover{
+    background:#e74c3c;
+    transform:translateY(-2px);
 }

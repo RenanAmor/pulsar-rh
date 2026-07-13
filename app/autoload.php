@@ -4,6 +4,20 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../config/app.php';
 
+/*
+|--------------------------------------------------------------------------
+| Carrega a classe Database
+|--------------------------------------------------------------------------
+*/
+
+require_once __DIR__ . '/../database/Database.php';
+
+/*
+|--------------------------------------------------------------------------
+| Autoload das classes da aplicação
+|--------------------------------------------------------------------------
+*/
+
 spl_autoload_register(function ($class) {
 
     $prefix = 'App\\';
@@ -20,10 +34,5 @@ spl_autoload_register(function ($class) {
 
     if (file_exists($file)) {
         require_once $file;
-        return;
-    }
-
-    if ($class === 'Database\\Database') {
-        require_once __DIR__ . '/../database/Database.php';
     }
 });

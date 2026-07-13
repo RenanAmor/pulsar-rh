@@ -10,7 +10,23 @@ declare(strict_types=1);
 
 define('APP_NAME', 'Pulsar RH');
 
-define('BASE_URL', '/humania-rh/public');
+/*
+|--------------------------------------------------------------------------
+| Detecta automaticamente o ambiente
+|--------------------------------------------------------------------------
+*/
+
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+if ($host === 'pulsarrh.local') {
+
+    define('BASE_URL', '');
+
+} else {
+
+    define('BASE_URL', '/humania-rh/public');
+
+}
 
 define('APP_ENV', 'local');
 
