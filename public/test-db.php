@@ -1,18 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 require_once __DIR__ . '/../app/autoload.php';
 
-use Database\Database;
+use App\Models\User;
+
+echo "<h1>Teste do Pulsar RH</h1>";
 
 try {
 
-    $pdo = Database::connect();
+    $userModel = new User();
 
-    echo "<h1>✅ Banco conectado com sucesso!</h1>";
+    $user = $userModel->findByEmail('admin@pulsarrh.com');
 
-} catch (Exception $e) {
+    if ($user) {
 
-    echo "<h1>❌ Erro:</h1>";
+        echo "<p style='color:green;font-weight:bold;'>✅ Usuário encontrado!</p>";
+
+        echo "<pre>";
+        print_r($user);
+        echo "</pre>";
+
+    } else {
+
+        echo "<p style='color:red;font-weight:bold;'>❌ Usuário não encontrado.</p>";
+
+    }
+
+} catch (Throwable $e) {
+
+    echo "<h3 style='color:red;'>Erro</h3>";
+
+    echo "<pre>";
     echo $e->getMessage();
+    echo "</pre>";
 
 }

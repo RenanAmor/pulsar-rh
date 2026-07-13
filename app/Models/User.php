@@ -9,18 +9,44 @@ class User
 {
     public static function findByEmail(string $email): ?array
     {
-        $pdo = Database::connect();
+        $db = Database::connect();
 
         $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
 
-        $stmt = $pdo->prepare($sql);
+        $stmt = $db->prepare($sql);
 
-        $stmt->execute([
-            'email' => $email
-        ]);
+        $stmt->bindValue(':email', $email);
+
+        $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $user ?: null;
+    }
+
+    public static function findById(int $id): ?array
+    {
+        $db = Database::connect();
+
+        $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
+
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user ?: null;
+    }
+
+    public static function all(): array
+    {
+        $db = Database::connect();
+
+        $stmt = $db->query("SELECT * FROM users ORDER BY name");
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

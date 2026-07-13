@@ -2,46 +2,108 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Pulsar RH - Dashboard</title>
 
-    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | <?= APP_NAME ?></title>
+
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
+
 </head>
 
 <body>
 
 <div class="dashboard">
 
-    <header class="topbar">
-        <h1>Pulsar RH</h1>
-        <span>Bem-vindo, Renan 👋</span>
-    </header>
+    <aside class="sidebar">
 
-    <section class="cards">
-
-        <div class="card">
-            <h2>Funcionários</h2>
-            <p>0</p>
+        <div class="logo">
+            <span>P</span>
         </div>
 
-        <div class="card">
-            <h2>Vagas</h2>
-            <p>0</p>
-        </div>
+        <h2><?= APP_NAME ?></h2>
 
-        <div class="card">
-            <h2>Currículos</h2>
-            <p>0</p>
-        </div>
+        <nav>
 
-        <div class="card">
-            <h2>Entrevistas</h2>
-            <p>0</p>
-        </div>
+            <a href="<?= BASE_URL ?>/dashboard">Dashboard</a>
 
-    </section>
+            <a href="<?= BASE_URL ?>/users">Usuários</a>
+
+            <a href="#">Empresas</a>
+
+            <a href="#">Vagas</a>
+
+            <a href="#">Candidatos</a>
+
+            <a href="#">Avaliações</a>
+
+            <a href="#">Relatórios</a>
+
+            <a href="#">Configurações</a>
+
+            <a href="<?= BASE_URL ?>/logout">Sair</a>
+
+        </nav>
+
+    </aside>
+
+    <main class="content">
+
+        <header>
+
+            <h1>Dashboard</h1>
+
+            <p>
+
+                Bem-vindo,
+                <strong><?= htmlspecialchars($user['name']) ?></strong>
+
+            </p>
+
+        </header>
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h3>Usuários</h3>
+
+                <h2>1</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Empresas</h3>
+
+                <h2>0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Vagas</h3>
+
+                <h2>0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Candidatos</h3>
+
+                <h2>0</h2>
+
+            </div>
+
+        </section>
+
+    </main>
 
 </div>
 
 </body>
+
 </html>

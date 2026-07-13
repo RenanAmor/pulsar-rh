@@ -7,9 +7,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Pulsar RH</title>
+    <title><?= APP_NAME ?></title>
 
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
 </head>
 
@@ -29,18 +29,16 @@
 
             <h1>Pulsar RH</h1>
 
-            <h2>
-                Inteligência para gestão de pessoas.
-            </h2>
+            <h2>Inteligência para Gestão de Pessoas</h2>
 
             <div class="gold-line"></div>
 
             <p>
 
-                Plataforma desenvolvida para transformar
-                recrutamento, avaliação comportamental,
-                desempenho e desenvolvimento humano
-                em uma única experiência inteligente.
+                Plataforma desenvolvida para recrutamento,
+                avaliação comportamental,
+                gestão de talentos e
+                desenvolvimento humano.
 
             </p>
 
@@ -56,27 +54,39 @@
 
             <h3>Bem-vindo</h3>
 
-            <p>
-                Entre com suas credenciais para continuar.
-            </p>
+            <p>Entre com seu e-mail e senha.</p>
 
-            <form>
+            <?php if (isset($error)): ?>
+
+                <div class="error-message">
+
+                    <?= htmlspecialchars($error) ?>
+
+                </div>
+
+            <?php endif; ?>
+
+            <form method="POST" action="<?= BASE_URL ?>/">
 
                 <label>E-mail</label>
 
                 <input
                     type="email"
+                    name="email"
                     placeholder="Digite seu e-mail"
+                    required
                 >
 
                 <label>Senha</label>
 
                 <input
                     type="password"
+                    name="password"
                     placeholder="Digite sua senha"
+                    required
                 >
 
-                <button>
+                <button type="submit">
 
                     Entrar
 
@@ -89,8 +99,6 @@
     </section>
 
 </div>
-
-<script src="/js/particles.js"></script>
 
 </body>
 

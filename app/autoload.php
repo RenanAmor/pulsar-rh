@@ -1,29 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
+require_once __DIR__ . '/../config/app.php';
+
 spl_autoload_register(function ($class) {
 
-    $prefixes = [
+    $prefix = 'App\\';
 
-        'App\\'      => __DIR__ . '/',
-        'Database\\' => __DIR__ . '/../database/',
+    $baseDir = __DIR__ . '/';
 
-    ];
-
-    foreach ($prefixes as $prefix => $baseDir) {
-
-        if (strpos($class, $prefix) !== 0) {
-            continue;
-        }
-
-        $relative = substr($class, strlen($prefix));
-
-        $file = $baseDir . str_replace('\\', '/', $relative) . '.php';
-
-        if (file_exists($file)) {
-            require_once $file;
-            return;
-        }
-
+    if (strncmp($prefix, $class, strlen($prefix)) !== 0) {
+        return;
     }
 
+    $relativeClass = substr($class, strlen($prefix));
+
+    $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
+
+    if (file_exists($file)) {
+        require_once $file;
+        return;
+    }
+
+    if ($class === 'Database\\Database') {
+        require_once __DIR__ . '/../database/Database.php';
+    }
 });
