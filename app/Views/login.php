@@ -9,7 +9,7 @@
 
     <title><?= APP_NAME ?></title>
 
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/style.css">
 
 </head>
 
@@ -34,12 +34,10 @@
             <div class="gold-line"></div>
 
             <p>
-
                 Plataforma desenvolvida para recrutamento,
                 avaliação comportamental,
                 gestão de talentos e
                 desenvolvimento humano.
-
             </p>
 
         </div>
@@ -59,9 +57,7 @@
             <?php if (isset($error)): ?>
 
                 <div class="error-message">
-
                     <?= htmlspecialchars($error) ?>
-
                 </div>
 
             <?php endif; ?>
@@ -87,9 +83,7 @@
                 >
 
                 <button type="submit">
-
                     Entrar
-
                 </button>
 
             </form>
