@@ -8,24 +8,12 @@ class Database
 {
     public static function connect(): PDO
     {
-        $host = 'localhost';
-        $database = 'pulsar_rh';
-        $user = 'root';
-        $password = '';
-
-        if (APP_ENV === 'production') {
-
-            $host = 'SEU_HOST_MYSQL';
-            $database = 'SEU_BANCO';
-            $user = 'SEU_USUARIO';
-            $password = 'SUA_SENHA';
-
-        }
+        $env = parse_ini_file(__DIR__ . '/../.env');
 
         return new PDO(
-            "mysql:host={$host};dbname={$database};charset=utf8mb4",
-            $user,
-            $password,
+            "mysql:host={$env['DB_HOST']};dbname={$env['DB_NAME']};charset=utf8mb4",
+            $env['DB_USER'],
+            $env['DB_PASS'],
             [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
