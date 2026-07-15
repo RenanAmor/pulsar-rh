@@ -5,6 +5,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/app/autoload.php';
 
 use App\Controllers\AuthController;
+use App\Controllers\CandidateController;
 use App\Controllers\CompanyController;
 use App\Controllers\DashboardController;
 use App\Controllers\JobController;
@@ -22,6 +23,10 @@ $path = $path ?: '/';
 
 switch ($path) {
 
+    // ==========================================
+    // LOGIN
+    // ==========================================
+
     case '/':
         echo (new AuthController())->login();
         break;
@@ -29,6 +34,10 @@ switch ($path) {
     case '/dashboard':
         echo (new DashboardController())->index();
         break;
+
+    // ==========================================
+    // USUÁRIOS
+    // ==========================================
 
     case '/users':
         echo (new UserController())->index();
@@ -58,6 +67,10 @@ switch ($path) {
         (new UserController())->delete();
         break;
 
+    // ==========================================
+    // EMPRESAS
+    // ==========================================
+
     case '/companies':
         echo (new CompanyController())->index();
         break;
@@ -86,6 +99,10 @@ switch ($path) {
         (new CompanyController())->delete();
         break;
 
+    // ==========================================
+    // VAGAS
+    // ==========================================
+
     case '/jobs':
         echo (new JobController())->index();
         break;
@@ -100,9 +117,33 @@ switch ($path) {
         }
         break;
 
+    // ==========================================
+    // CANDIDATOS
+    // ==========================================
+
+    case '/candidates':
+        echo (new CandidateController())->index();
+        break;
+
+    case '/candidates/create':
+        echo (new CandidateController())->create();
+        break;
+
+    case '/candidates/store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new CandidateController())->store();
+        }
+        break;
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
     case '/logout':
         (new AuthController())->logout();
         break;
+
+    // ==========================================
 
     default:
         http_response_code(404);
