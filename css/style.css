@@ -383,4 +383,53 @@ select option{
 .btn-action.delete:hover{
     background:#e74c3c;
     transform:translateY(-2px);
+}/* ===========================================================
+   DASHBOARD V2
+=========================================================== */
+
+.sidebar nav a.active{
+    background:#D4AF37;
+    color:#111;
+}
+
+.sidebar nav a.active:hover{
+    color:#111;
+}
+
+.card ul{
+    list-style:none;
+    margin:15px 0 0;
+    padding:0;
+}
+
+.card ul li{
+    padding:10px 0;
+    color:#d7dde4;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.card ul li:last-child{
+    border-bottom:none;
+}
+
+.card strong{
+    color:#D4AF37;
+}
+
+.content header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.cards .card{
+    min-height:150px;
+}
+
+.cards .card h2{
+    font-size:48px;
+}
+
+.card{
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
 }

@@ -9,7 +9,7 @@
 
     <title><?= APP_NAME ?></title>
 
-    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
 </head>
 
