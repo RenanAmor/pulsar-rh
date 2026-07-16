@@ -39,6 +39,8 @@
 
             <a href="<?= BASE_URL ?>/positions">Cargos</a>
 
+            <a href="<?= BASE_URL ?>/employees">Colaboradores</a>
+
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
 
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
@@ -115,6 +117,14 @@
             <div class="card">
 
                 <h3>Cargos</h3>
+
+                <h2>0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Colaboradores</h3>
 
                 <h2>0</h2>
 

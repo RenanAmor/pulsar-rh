@@ -32,6 +32,7 @@
             <a href="<?= BASE_URL ?>/departments">Setores</a>
             <a href="<?= BASE_URL ?>/users">Usuários</a>
             <a href="<?= BASE_URL ?>/positions">Cargos</a>
+            <a href="<?= BASE_URL ?>/employees">Colaboradores</a>
             <a class="active" href="<?= BASE_URL ?>/jobs">Vagas</a>
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>

@@ -14,6 +14,7 @@ use App\Controllers\CandidateController;
 use App\Controllers\CompanyController;
 use App\Controllers\DashboardController;
 use App\Controllers\DepartmentController;
+use App\Controllers\EmployeeController;
 use App\Controllers\JobController;
 use App\Controllers\PositionController;
 use App\Controllers\UserController;
@@ -182,6 +183,35 @@ switch ($path) {
 
     case '/positions/delete':
         (new PositionController())->delete();
+        break;
+
+    // COLABORADORES
+    case '/employees':
+        echo (new EmployeeController())->index();
+        break;
+
+    case '/employees/create':
+        echo (new EmployeeController())->create();
+        break;
+
+    case '/employees/store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new EmployeeController())->store();
+        }
+        break;
+
+    case '/employees/edit':
+        echo (new EmployeeController())->edit();
+        break;
+
+    case '/employees/update':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new EmployeeController())->update();
+        }
+        break;
+
+    case '/employees/delete':
+        (new EmployeeController())->delete();
         break;
 
     // VAGAS

@@ -38,6 +38,7 @@
             <a href="<?= BASE_URL ?>/departments">Setores</a>
 
             <a href="<?= BASE_URL ?>/positions">Cargos</a>
+            <a href="<?= BASE_URL ?>/employees">Colaboradores</a>
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
 
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
