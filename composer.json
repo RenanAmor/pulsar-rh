@@ -1,0 +1,12 @@
+{
+    "name": "renanamor/pulsar-rh",
+    "description": "Plataforma SaaS de Inteligencia Organizacional",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\": "database/"
+        }
+    },
+    "require": {}
+}
