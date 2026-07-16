@@ -30,6 +30,7 @@
             <a href="<?= BASE_URL ?>/companies">Empresas</a>
             <a href="<?= BASE_URL ?>/branches">Filiais</a>
             <a href="<?= BASE_URL ?>/departments">Setores</a>
+            <a href="<?= BASE_URL ?>/teams">Equipes</a>
             <a href="<?= BASE_URL ?>/users">Usuários</a>
             <a href="<?= BASE_URL ?>/positions">Cargos</a>
             <a href="<?= BASE_URL ?>/employees">Colaboradores</a>

@@ -17,6 +17,7 @@ use App\Controllers\DepartmentController;
 use App\Controllers\EmployeeController;
 use App\Controllers\JobController;
 use App\Controllers\PositionController;
+use App\Controllers\TeamController;
 use App\Controllers\UserController;
 
 $base = BASE_URL;
@@ -154,6 +155,35 @@ switch ($path) {
 
     case '/departments/delete':
         (new DepartmentController())->delete();
+        break;
+
+    // EQUIPES
+    case '/teams':
+        echo (new TeamController())->index();
+        break;
+
+    case '/teams/create':
+        echo (new TeamController())->create();
+        break;
+
+    case '/teams/store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new TeamController())->store();
+        }
+        break;
+
+    case '/teams/edit':
+        echo (new TeamController())->edit();
+        break;
+
+    case '/teams/update':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new TeamController())->update();
+        }
+        break;
+
+    case '/teams/delete':
+        (new TeamController())->delete();
         break;
 
     // CARGOS

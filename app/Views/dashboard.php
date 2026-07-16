@@ -37,6 +37,8 @@
 
             <a href="<?= BASE_URL ?>/departments">Setores</a>
 
+            <a href="<?= BASE_URL ?>/teams">Equipes</a>
+
             <a href="<?= BASE_URL ?>/positions">Cargos</a>
 
             <a href="<?= BASE_URL ?>/employees">Colaboradores</a>
@@ -109,6 +111,14 @@
             <div class="card">
 
                 <h3>Setores</h3>
+
+                <h2>0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Equipes</h3>
 
                 <h2>0</h2>
 

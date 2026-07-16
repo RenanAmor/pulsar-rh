@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Novo Colaborador - <?= APP_NAME ?></title>
+    <title>Nova Equipe - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -31,9 +31,9 @@
             <a href="<?= BASE_URL ?>/companies">Empresas</a>
             <a href="<?= BASE_URL ?>/branches">Filiais</a>
             <a href="<?= BASE_URL ?>/departments">Setores</a>
-            <a href="<?= BASE_URL ?>/teams">Equipes</a>
+            <a class="active" href="<?= BASE_URL ?>/teams">Equipes</a>
             <a href="<?= BASE_URL ?>/positions">Cargos</a>
-            <a class="active" href="<?= BASE_URL ?>/employees">Colaboradores</a>
+            <a href="<?= BASE_URL ?>/employees">Colaboradores</a>
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
@@ -44,11 +44,11 @@
 
     <main class="content">
 
-        <h1>Novo Colaborador</h1>
+        <h1>Nova Equipe</h1>
 
         <div class="card">
 
-            <form method="POST" action="<?= BASE_URL ?>/employees/store">
+            <form method="POST" action="<?= BASE_URL ?>/teams/store">
 
                 <label>Empresa</label>
                 <select name="company_id" id="company_id" required>
@@ -87,91 +87,38 @@
                     <?php endforeach; ?>
                 </select>
 
-                <label>Cargo</label>
-                <select name="position_id" id="position_id" required>
-                    <option value="">Selecione um cargo</option>
-                    <?php foreach ($positions as $position): ?>
-                        <option
-                            value="<?= $position['id'] ?>"
-                            data-company-id="<?= $position['company_id'] ?>"
-                            data-branch-id="<?= $position['branch_id'] ?>"
-                            data-department-id="<?= $position['department_id'] ?>"
-                        >
-                            <?= htmlspecialchars($position['company_name']) ?> / <?= htmlspecialchars($position['branch_name']) ?> / <?= htmlspecialchars($position['department_name']) ?> / <?= htmlspecialchars($position['name']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-
-                <label>Gestor</label>
-                <select name="manager_id" id="manager_id">
+                <label>Gestor da Equipe</label>
+                <select name="leader_id" id="leader_id">
                     <option value="">Sem gestor</option>
-                    <?php foreach ($managers as $manager): ?>
+                    <?php foreach ($leaders as $leader): ?>
                         <option
-                            value="<?= $manager['id'] ?>"
-                            data-company-id="<?= $manager['company_id'] ?>"
-                            data-branch-id="<?= $manager['branch_id'] ?>"
-                            data-department-id="<?= $manager['department_id'] ?>"
+                            value="<?= $leader['id'] ?>"
+                            data-company-id="<?= $leader['company_id'] ?>"
+                            data-branch-id="<?= $leader['branch_id'] ?>"
+                            data-department-id="<?= $leader['department_id'] ?>"
                         >
-                            <?= htmlspecialchars($manager['name']) ?>
+                            <?= htmlspecialchars($leader['name']) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
 
-                <label>Nome do Colaborador</label>
+                <label>Nome da Equipe</label>
                 <input type="text" name="name" required>
 
-                <label>Matrícula</label>
-                <input type="text" name="registration">
+                <label>Código</label>
+                <input type="text" name="code">
 
-                <label>CPF</label>
-                <input type="text" name="cpf">
-
-                <label>Data de Nascimento</label>
-                <input type="date" name="birth_date">
-
-                <label>Gênero</label>
-                <select name="gender">
-                    <option value="">Não informado</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                    <option value="Outro">Outro</option>
-                    <option value="Prefiro não informar">Prefiro não informar</option>
-                </select>
-
-                <label>E-mail</label>
-                <input type="email" name="email">
-
-                <label>Telefone</label>
-                <input type="text" name="phone">
-
-                <label>Data de Admissão</label>
-                <input type="date" name="admission_date">
-
-                <label>Data de Desligamento</label>
-                <input type="date" name="termination_date">
-
-                <label>Tipo de Contrato</label>
-                <select name="employment_type">
-                    <option value="CLT">CLT</option>
-                    <option value="PJ">PJ</option>
-                    <option value="Estágio">Estágio</option>
-                    <option value="Temporário">Temporário</option>
-                    <option value="Terceirizado">Terceirizado</option>
-                </select>
+                <label>Descrição</label>
+                <textarea name="description" rows="4"></textarea>
 
                 <label>Status</label>
-                <select name="status">
-                    <option value="Ativo">Ativo</option>
-                    <option value="Férias">Férias</option>
-                    <option value="Afastado">Afastado</option>
-                    <option value="Desligado">Desligado</option>
+                <select name="active">
+                    <option value="1">Ativa</option>
+                    <option value="0">Inativa</option>
                 </select>
 
-                <label>ID do Time (opcional)</label>
-                <input type="number" name="team_id" min="1">
-
                 <button type="submit">
-                    Salvar Colaborador
+                    Salvar Equipe
                 </button>
 
             </form>
@@ -186,21 +133,18 @@
     const companySelect = document.getElementById('company_id');
     const branchSelect = document.getElementById('branch_id');
     const departmentSelect = document.getElementById('department_id');
-    const positionSelect = document.getElementById('position_id');
-    const managerSelect = document.getElementById('manager_id');
+    const leaderSelect = document.getElementById('leader_id');
 
     const allBranchOptions = Array.from(branchSelect.querySelectorAll('option[data-company-id]'));
     const allDepartmentOptions = Array.from(departmentSelect.querySelectorAll('option[data-company-id]'));
-    const allPositionOptions = Array.from(positionSelect.querySelectorAll('option[data-company-id]'));
-    const allManagerOptions = Array.from(managerSelect.querySelectorAll('option[data-company-id]'));
+    const allLeaderOptions = Array.from(leaderSelect.querySelectorAll('option[data-company-id]'));
 
     function filterBranchesByCompany() {
         const selectedCompanyId = companySelect.value;
 
         branchSelect.innerHTML = '<option value="">Selecione uma filial</option>';
         departmentSelect.innerHTML = '<option value="">Selecione um setor</option>';
-        positionSelect.innerHTML = '<option value="">Selecione um cargo</option>';
-        managerSelect.innerHTML = '<option value="">Sem gestor</option>';
+        leaderSelect.innerHTML = '<option value="">Sem gestor</option>';
 
         allBranchOptions.forEach((option) => {
             if (!selectedCompanyId || option.dataset.companyId === selectedCompanyId) {
@@ -214,8 +158,7 @@
         const selectedBranchId = branchSelect.value;
 
         departmentSelect.innerHTML = '<option value="">Selecione um setor</option>';
-        positionSelect.innerHTML = '<option value="">Selecione um cargo</option>';
-        managerSelect.innerHTML = '<option value="">Sem gestor</option>';
+        leaderSelect.innerHTML = '<option value="">Sem gestor</option>';
 
         allDepartmentOptions.forEach((option) => {
             const matchCompany = !selectedCompanyId || option.dataset.companyId === selectedCompanyId;
@@ -227,48 +170,27 @@
         });
     }
 
-    function filterPositionsByDepartment() {
+    function filterLeadersByDepartment() {
         const selectedCompanyId = companySelect.value;
         const selectedBranchId = branchSelect.value;
         const selectedDepartmentId = departmentSelect.value;
 
-        positionSelect.innerHTML = '<option value="">Selecione um cargo</option>';
-        managerSelect.innerHTML = '<option value="">Sem gestor</option>';
+        leaderSelect.innerHTML = '<option value="">Sem gestor</option>';
 
-        allPositionOptions.forEach((option) => {
+        allLeaderOptions.forEach((option) => {
             const matchCompany = !selectedCompanyId || option.dataset.companyId === selectedCompanyId;
             const matchBranch = !selectedBranchId || option.dataset.branchId === selectedBranchId;
             const matchDepartment = !selectedDepartmentId || option.dataset.departmentId === selectedDepartmentId;
 
             if (matchCompany && matchBranch && matchDepartment) {
-                positionSelect.appendChild(option);
-            }
-        });
-
-        filterManagersByHierarchy();
-    }
-
-    function filterManagersByHierarchy() {
-        const selectedCompanyId = companySelect.value;
-        const selectedBranchId = branchSelect.value;
-        const selectedDepartmentId = departmentSelect.value;
-
-        managerSelect.innerHTML = '<option value="">Sem gestor</option>';
-
-        allManagerOptions.forEach((option) => {
-            const matchCompany = !selectedCompanyId || option.dataset.companyId === selectedCompanyId;
-            const matchBranch = !selectedBranchId || option.dataset.branchId === selectedBranchId;
-            const matchDepartment = !selectedDepartmentId || option.dataset.departmentId === selectedDepartmentId;
-
-            if (matchCompany && matchBranch && matchDepartment) {
-                managerSelect.appendChild(option);
+                leaderSelect.appendChild(option);
             }
         });
     }
 
     companySelect.addEventListener('change', filterBranchesByCompany);
     branchSelect.addEventListener('change', filterDepartmentsByBranch);
-    departmentSelect.addEventListener('change', filterPositionsByDepartment);
+    departmentSelect.addEventListener('change', filterLeadersByDepartment);
 
     filterBranchesByCompany();
 </script>
