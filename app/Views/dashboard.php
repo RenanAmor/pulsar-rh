@@ -35,6 +35,8 @@
 
             <a href="<?= BASE_URL ?>/branches">Filiais</a>
 
+            <a href="<?= BASE_URL ?>/departments">Setores</a>
+
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
 
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
@@ -95,6 +97,14 @@
             <div class="card">
 
                 <h3>Filiais</h3>
+
+                <h2>0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Setores</h3>
 
                 <h2>0</h2>
 

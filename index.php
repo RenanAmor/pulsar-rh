@@ -13,6 +13,7 @@ use App\Controllers\BranchController;
 use App\Controllers\CandidateController;
 use App\Controllers\CompanyController;
 use App\Controllers\DashboardController;
+use App\Controllers\DepartmentController;
 use App\Controllers\JobController;
 use App\Controllers\UserController;
 
@@ -122,6 +123,35 @@ switch ($path) {
 
     case '/branches/delete':
         (new BranchController())->delete();
+        break;
+
+    // SETORES
+    case '/departments':
+        echo (new DepartmentController())->index();
+        break;
+
+    case '/departments/create':
+        echo (new DepartmentController())->create();
+        break;
+
+    case '/departments/store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new DepartmentController())->store();
+        }
+        break;
+
+    case '/departments/edit':
+        echo (new DepartmentController())->edit();
+        break;
+
+    case '/departments/update':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new DepartmentController())->update();
+        }
+        break;
+
+    case '/departments/delete':
+        (new DepartmentController())->delete();
         break;
 
     // VAGAS

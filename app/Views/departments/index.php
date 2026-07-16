@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Empresas - <?= APP_NAME ?></title>
+    <title>Setores - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -28,9 +28,9 @@
 
             <a href="<?= BASE_URL ?>/dashboard">Dashboard</a>
             <a href="<?= BASE_URL ?>/users">Usuários</a>
-            <a class="active" href="<?= BASE_URL ?>/companies">Empresas</a>
+            <a href="<?= BASE_URL ?>/companies">Empresas</a>
             <a href="<?= BASE_URL ?>/branches">Filiais</a>
-            <a href="<?= BASE_URL ?>/departments">Setores</a>
+            <a class="active" href="<?= BASE_URL ?>/departments">Setores</a>
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
@@ -43,10 +43,10 @@
 
         <div class="page-header">
 
-            <h1>Empresas</h1>
+            <h1>Setores</h1>
 
-            <a class="btn-primary" href="<?= BASE_URL ?>/companies/create">
-                + Nova Empresa
+            <a class="btn-primary" href="<?= BASE_URL ?>/departments/create">
+                + Novo Setor
             </a>
 
         </div>
@@ -56,9 +56,10 @@
             <thead>
 
                 <tr>
-                    <th>Nome Fantasia</th>
-                    <th>CNPJ</th>
-                    <th>Cidade</th>
+                    <th>Empresa</th>
+                    <th>Filial</th>
+                    <th>Setor</th>
+                    <th>Código</th>
                     <th>Status</th>
                     <th width="180">Ações</th>
                 </tr>
@@ -67,28 +68,26 @@
 
             <tbody>
 
-            <?php foreach ($companies as $company): ?>
+            <?php foreach ($departments as $department): ?>
 
                 <tr>
 
-                    <td><?= htmlspecialchars($company['trade_name']) ?></td>
-
-                    <td><?= htmlspecialchars($company['document']) ?></td>
-
-                    <td><?= htmlspecialchars($company['city']) ?></td>
-
-                    <td><?= $company['active'] ? 'Ativa' : 'Inativa' ?></td>
+                    <td><?= htmlspecialchars($department['company_name']) ?></td>
+                    <td><?= htmlspecialchars($department['branch_name']) ?></td>
+                    <td><?= htmlspecialchars($department['name']) ?></td>
+                    <td><?= htmlspecialchars($department['code'] ?? '') ?></td>
+                    <td><?= $department['active'] ? 'Ativo' : 'Inativo' ?></td>
 
                     <td>
 
                         <a class="btn-action edit"
-                           href="<?= BASE_URL ?>/companies/edit?id=<?= $company['id'] ?>">
+                           href="<?= BASE_URL ?>/departments/edit?id=<?= $department['id'] ?>">
                             ✏️ Editar
                         </a>
 
                         <a class="btn-action delete"
-                           href="<?= BASE_URL ?>/companies/delete?id=<?= $company['id'] ?>"
-                           onclick="return confirm('Deseja realmente excluir esta empresa?')">
+                           href="<?= BASE_URL ?>/departments/delete?id=<?= $department['id'] ?>"
+                           onclick="return confirm('Deseja realmente excluir este setor?')">
                             🗑️ Excluir
                         </a>
 
