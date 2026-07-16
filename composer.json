@@ -1,29 +1,22 @@
 {
     "name": "renanamor/pulsar-rh",
-
     "description": "Pulsar RH - Plataforma de Inteligência Organizacional",
-
     "type": "project",
-
     "license": "proprietary",
-
     "require": {
         "php": "^8.2"
     },
-
     "autoload": {
         "psr-4": {
             "App\\": "app/",
             "Database\\": "database/"
         }
     },
-
     "scripts": {
         "migrate": "php migrate.php",
         "serve": "php -S localhost:8000",
         "test-db": "php test-db.php"
     },
-
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true

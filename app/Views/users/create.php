@@ -29,13 +29,15 @@
 
             <a href="<?= BASE_URL ?>/dashboard">Dashboard</a>
 
-            <a href="<?= BASE_URL ?>/users">Usuários</a>
+            <a class="active" href="<?= BASE_URL ?>/users">Usuários</a>
 
-            <a href="#">Empresas</a>
+            <a href="<?= BASE_URL ?>/companies">Empresas</a>
 
-            <a href="#">Vagas</a>
+            <a href="<?= BASE_URL ?>/branches">Filiais</a>
 
-            <a href="#">Candidatos</a>
+            <a href="<?= BASE_URL ?>/jobs">Vagas</a>
+
+            <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
 
             <a href="#">Avaliações</a>
 

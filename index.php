@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/app/autoload.php';
 
 use App\Controllers\AuthController;
+use App\Controllers\BranchController;
 use App\Controllers\CandidateController;
 use App\Controllers\CompanyController;
 use App\Controllers\DashboardController;
@@ -92,6 +93,35 @@ switch ($path) {
 
     case '/companies/delete':
         (new CompanyController())->delete();
+        break;
+
+    // FILIAIS
+    case '/branches':
+        echo (new BranchController())->index();
+        break;
+
+    case '/branches/create':
+        echo (new BranchController())->create();
+        break;
+
+    case '/branches/store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new BranchController())->store();
+        }
+        break;
+
+    case '/branches/edit':
+        echo (new BranchController())->edit();
+        break;
+
+    case '/branches/update':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new BranchController())->update();
+        }
+        break;
+
+    case '/branches/delete':
+        (new BranchController())->delete();
         break;
 
     // VAGAS

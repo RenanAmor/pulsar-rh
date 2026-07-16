@@ -28,6 +28,10 @@
 
             <a href="<?= BASE_URL ?>/dashboard">Dashboard</a>
             <a class="active" href="<?= BASE_URL ?>/users">Usuários</a>
+            <a href="<?= BASE_URL ?>/companies">Empresas</a>
+            <a href="<?= BASE_URL ?>/branches">Filiais</a>
+            <a href="<?= BASE_URL ?>/jobs">Vagas</a>
+            <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
 
         </nav>
