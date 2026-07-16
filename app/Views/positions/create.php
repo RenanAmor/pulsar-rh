@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Novo Setor - <?= APP_NAME ?></title>
+    <title>Novo Cargo - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -30,8 +30,8 @@
             <a href="<?= BASE_URL ?>/users">Usuários</a>
             <a href="<?= BASE_URL ?>/companies">Empresas</a>
             <a href="<?= BASE_URL ?>/branches">Filiais</a>
-            <a class="active" href="<?= BASE_URL ?>/departments">Setores</a>
-            <a href="<?= BASE_URL ?>/positions">Cargos</a>
+            <a href="<?= BASE_URL ?>/departments">Setores</a>
+            <a class="active" href="<?= BASE_URL ?>/positions">Cargos</a>
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
@@ -42,11 +42,11 @@
 
     <main class="content">
 
-        <h1>Novo Setor</h1>
+        <h1>Novo Cargo</h1>
 
         <div class="card">
 
-            <form method="POST" action="<?= BASE_URL ?>/departments/store">
+            <form method="POST" action="<?= BASE_URL ?>/positions/store">
 
                 <label>Empresa</label>
                 <select name="company_id" id="company_id" required>
@@ -71,20 +71,34 @@
                     <?php endforeach; ?>
                 </select>
 
-                <label>Nome do Setor</label>
+                <label>Setor</label>
+                <select name="department_id" id="department_id" required>
+                    <option value="">Selecione um setor</option>
+                    <?php foreach ($departments as $dept): ?>
+                        <option
+                            value="<?= $dept['id'] ?>"
+                            data-company-id="<?= $dept['company_id'] ?>"
+                            data-branch-id="<?= $dept['branch_id'] ?>"
+                        >
+                            <?= htmlspecialchars($dept['company_name']) ?> / <?= htmlspecialchars($dept['branch_name']) ?> / <?= htmlspecialchars($dept['name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+
+                <label>Nome do Cargo</label>
                 <input type="text" name="name" required>
 
                 <label>Código</label>
                 <input type="text" name="code">
 
-                <label>Gestor (ID do usuário)</label>
-                <input type="number" name="manager_id" min="1">
+                <label>CBO</label>
+                <input type="text" name="cbo" placeholder="Ex: 2521-05">
 
-                <label>E-mail</label>
-                <input type="email" name="email">
+                <label>Salário Mínimo</label>
+                <input type="number" name="salary_min" step="0.01" min="0">
 
-                <label>Telefone</label>
-                <input type="text" name="phone">
+                <label>Salário Máximo</label>
+                <input type="number" name="salary_max" step="0.01" min="0">
 
                 <label>Descrição</label>
                 <textarea name="description" rows="4"></textarea>
@@ -96,7 +110,7 @@
                 </select>
 
                 <button type="submit">
-                    Salvar Setor
+                    Salvar Cargo
                 </button>
 
             </form>
@@ -110,12 +124,16 @@
 <script>
     const companySelect = document.getElementById('company_id');
     const branchSelect = document.getElementById('branch_id');
+    const departmentSelect = document.getElementById('department_id');
+
     const allBranchOptions = Array.from(branchSelect.querySelectorAll('option[data-company-id]'));
+    const allDeptOptions = Array.from(departmentSelect.querySelectorAll('option[data-company-id]'));
 
     function filterBranchesByCompany() {
         const selectedCompanyId = companySelect.value;
 
         branchSelect.innerHTML = '<option value="">Selecione uma filial</option>';
+        departmentSelect.innerHTML = '<option value="">Selecione um setor</option>';
 
         allBranchOptions.forEach((option) => {
             if (!selectedCompanyId || option.dataset.companyId === selectedCompanyId) {
@@ -124,7 +142,24 @@
         });
     }
 
+    function filterDepartmentsByBranch() {
+        const selectedCompanyId = companySelect.value;
+        const selectedBranchId = branchSelect.value;
+
+        departmentSelect.innerHTML = '<option value="">Selecione um setor</option>';
+
+        allDeptOptions.forEach((option) => {
+            const matchCompany = !selectedCompanyId || option.dataset.companyId === selectedCompanyId;
+            const matchBranch = !selectedBranchId || option.dataset.branchId === selectedBranchId;
+
+            if (matchCompany && matchBranch) {
+                departmentSelect.appendChild(option);
+            }
+        });
+    }
+
     companySelect.addEventListener('change', filterBranchesByCompany);
+    branchSelect.addEventListener('change', filterDepartmentsByBranch);
 </script>
 
 </body>

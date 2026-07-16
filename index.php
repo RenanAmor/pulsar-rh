@@ -15,6 +15,7 @@ use App\Controllers\CompanyController;
 use App\Controllers\DashboardController;
 use App\Controllers\DepartmentController;
 use App\Controllers\JobController;
+use App\Controllers\PositionController;
 use App\Controllers\UserController;
 
 $base = BASE_URL;
@@ -152,6 +153,35 @@ switch ($path) {
 
     case '/departments/delete':
         (new DepartmentController())->delete();
+        break;
+
+    // CARGOS
+    case '/positions':
+        echo (new PositionController())->index();
+        break;
+
+    case '/positions/create':
+        echo (new PositionController())->create();
+        break;
+
+    case '/positions/store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new PositionController())->store();
+        }
+        break;
+
+    case '/positions/edit':
+        echo (new PositionController())->edit();
+        break;
+
+    case '/positions/update':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new PositionController())->update();
+        }
+        break;
+
+    case '/positions/delete':
+        (new PositionController())->delete();
         break;
 
     // VAGAS

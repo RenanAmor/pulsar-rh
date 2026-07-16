@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Setores - <?= APP_NAME ?></title>
+    <title>Cargos - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -30,8 +30,8 @@
             <a href="<?= BASE_URL ?>/users">Usuários</a>
             <a href="<?= BASE_URL ?>/companies">Empresas</a>
             <a href="<?= BASE_URL ?>/branches">Filiais</a>
-            <a class="active" href="<?= BASE_URL ?>/departments">Setores</a>
-            <a href="<?= BASE_URL ?>/positions">Cargos</a>
+            <a href="<?= BASE_URL ?>/departments">Setores</a>
+            <a class="active" href="<?= BASE_URL ?>/positions">Cargos</a>
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
@@ -44,10 +44,10 @@
 
         <div class="page-header">
 
-            <h1>Setores</h1>
+            <h1>Cargos</h1>
 
-            <a class="btn-primary" href="<?= BASE_URL ?>/departments/create">
-                + Novo Setor
+            <a class="btn-primary" href="<?= BASE_URL ?>/positions/create">
+                + Novo Cargo
             </a>
 
         </div>
@@ -60,7 +60,9 @@
                     <th>Empresa</th>
                     <th>Filial</th>
                     <th>Setor</th>
+                    <th>Cargo</th>
                     <th>Código</th>
+                    <th>CBO</th>
                     <th>Status</th>
                     <th width="180">Ações</th>
                 </tr>
@@ -69,26 +71,28 @@
 
             <tbody>
 
-            <?php foreach ($departments as $department): ?>
+            <?php foreach ($positions as $position): ?>
 
                 <tr>
 
-                    <td><?= htmlspecialchars($department['company_name']) ?></td>
-                    <td><?= htmlspecialchars($department['branch_name']) ?></td>
-                    <td><?= htmlspecialchars($department['name']) ?></td>
-                    <td><?= htmlspecialchars($department['code'] ?? '') ?></td>
-                    <td><?= $department['active'] ? 'Ativo' : 'Inativo' ?></td>
+                    <td><?= htmlspecialchars($position['company_name']) ?></td>
+                    <td><?= htmlspecialchars($position['branch_name']) ?></td>
+                    <td><?= htmlspecialchars($position['department_name']) ?></td>
+                    <td><?= htmlspecialchars($position['name']) ?></td>
+                    <td><?= htmlspecialchars($position['code'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($position['cbo'] ?? '') ?></td>
+                    <td><?= $position['active'] ? 'Ativo' : 'Inativo' ?></td>
 
                     <td>
 
                         <a class="btn-action edit"
-                           href="<?= BASE_URL ?>/departments/edit?id=<?= $department['id'] ?>">
+                           href="<?= BASE_URL ?>/positions/edit?id=<?= $position['id'] ?>">
                             ✏️ Editar
                         </a>
 
                         <a class="btn-action delete"
-                           href="<?= BASE_URL ?>/departments/delete?id=<?= $department['id'] ?>"
-                           onclick="return confirm('Deseja realmente excluir este setor?')">
+                           href="<?= BASE_URL ?>/positions/delete?id=<?= $position['id'] ?>"
+                           onclick="return confirm('Deseja realmente excluir este cargo?')">
                             🗑️ Excluir
                         </a>
 
