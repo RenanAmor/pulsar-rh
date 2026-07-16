@@ -55,10 +55,10 @@
             <thead>
 
                 <tr>
-                    <th>Nome</th>
-                    <th>Código</th>
+                    <th>Empresa</th>
+                    <th>Filial</th>
+                    <th>CNPJ</th>
                     <th>Cidade</th>
-                    <th>UF</th>
                     <th>Status</th>
                     <th width="180">Ações</th>
                 </tr>
@@ -71,14 +71,10 @@
 
                 <tr>
 
+                    <td><?= htmlspecialchars($branch['company_name']) ?></td>
                     <td><?= htmlspecialchars($branch['name']) ?></td>
-
-                    <td><?= htmlspecialchars($branch['code']) ?></td>
-
-                    <td><?= htmlspecialchars($branch['city']) ?></td>
-
-                    <td><?= htmlspecialchars($branch['state']) ?></td>
-
+                    <td><?= htmlspecialchars($branch['document']) ?></td>
+                    <td><?= htmlspecialchars($branch['city'] ?? '') ?></td>
                     <td><?= $branch['active'] ? 'Ativa' : 'Inativa' ?></td>
 
                     <td>

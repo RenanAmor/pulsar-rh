@@ -46,17 +46,33 @@
 
             <form method="POST" action="<?= BASE_URL ?>/branches/store">
 
-                <label>Nome</label>
+                <label>Empresa</label>
+                <select name="company_id" required>
+                    <option value="">Selecione uma empresa</option>
+                    <?php foreach ($companies as $company): ?>
+                        <option value="<?= $company['id'] ?>">
+                            <?= htmlspecialchars($company['trade_name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+
+                <label>Nome da Filial</label>
                 <input type="text" name="name" required>
 
-                <label>Código</label>
-                <input type="text" name="code" required>
+                <label>CNPJ</label>
+                <input type="text" name="document" required>
+
+                <label>E-mail</label>
+                <input type="email" name="email">
+
+                <label>Telefone</label>
+                <input type="text" name="phone">
 
                 <label>Cidade</label>
-                <input type="text" name="city" required>
+                <input type="text" name="city">
 
                 <label>UF</label>
-                <input type="text" name="state" maxlength="2" required>
+                <input type="text" name="state" maxlength="2">
 
                 <label>Status</label>
                 <select name="active">

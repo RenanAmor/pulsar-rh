@@ -4,15 +4,18 @@ namespace App\Controllers;
 
 use App\Services\AuthService;
 use App\Services\BranchService;
+use App\Services\CompanyService;
 
 class BranchController
 {
     private BranchService $service;
+    private CompanyService $companies;
     private AuthService $auth;
 
     public function __construct()
     {
         $this->service = new BranchService();
+        $this->companies = new CompanyService();
         $this->auth = new AuthService();
     }
 
@@ -39,6 +42,8 @@ class BranchController
     {
         $this->protect();
 
+        $companies = $this->companies->listForSelect();
+
         ob_start();
         require __DIR__ . '/../Views/branches/create.php';
         return ob_get_clean();
@@ -49,11 +54,14 @@ class BranchController
         $this->protect();
 
         $this->service->create([
-            'name'   => trim($_POST['name']),
-            'code'   => trim($_POST['code']),
-            'city'   => trim($_POST['city']),
-            'state'  => trim($_POST['state']),
-            'active' => (int) $_POST['active']
+            'company_id' => (int) $_POST['company_id'],
+            'name'       => trim($_POST['name']),
+            'document'   => trim($_POST['document']),
+            'email'      => trim($_POST['email']) ?: null,
+            'phone'      => trim($_POST['phone']) ?: null,
+            'city'       => trim($_POST['city']) ?: null,
+            'state'      => trim($_POST['state']) ?: null,
+            'active'     => (int) $_POST['active']
         ]);
 
         header('Location: ' . BASE_URL . '/branches');
@@ -73,6 +81,8 @@ class BranchController
             exit;
         }
 
+        $companies = $this->companies->listForSelect();
+
         ob_start();
         require __DIR__ . '/../Views/branches/edit.php';
         return ob_get_clean();
@@ -85,11 +95,14 @@ class BranchController
         $id = (int) $_POST['id'];
 
         $this->service->update($id, [
-            'name'   => trim($_POST['name']),
-            'code'   => trim($_POST['code']),
-            'city'   => trim($_POST['city']),
-            'state'  => trim($_POST['state']),
-            'active' => (int) $_POST['active']
+            'company_id' => (int) $_POST['company_id'],
+            'name'       => trim($_POST['name']),
+            'document'   => trim($_POST['document']),
+            'email'      => trim($_POST['email']) ?: null,
+            'phone'      => trim($_POST['phone']) ?: null,
+            'city'       => trim($_POST['city']) ?: null,
+            'state'      => trim($_POST['state']) ?: null,
+            'active'     => (int) $_POST['active']
         ]);
 
         header('Location: ' . BASE_URL . '/branches');

@@ -52,17 +52,32 @@
                     value="<?= $branch['id'] ?>"
                 >
 
-                <label>Nome</label>
+                <label>Empresa</label>
+                <select name="company_id" required>
+                    <?php foreach ($companies as $company): ?>
+                        <option value="<?= $company['id'] ?>" <?= (int) $branch['company_id'] === (int) $company['id'] ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($company['trade_name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+
+                <label>Nome da Filial</label>
                 <input type="text" name="name" value="<?= htmlspecialchars($branch['name']) ?>" required>
 
-                <label>Código</label>
-                <input type="text" name="code" value="<?= htmlspecialchars($branch['code']) ?>" required>
+                <label>CNPJ</label>
+                <input type="text" name="document" value="<?= htmlspecialchars($branch['document']) ?>" required>
+
+                <label>E-mail</label>
+                <input type="email" name="email" value="<?= htmlspecialchars($branch['email'] ?? '') ?>">
+
+                <label>Telefone</label>
+                <input type="text" name="phone" value="<?= htmlspecialchars($branch['phone'] ?? '') ?>">
 
                 <label>Cidade</label>
-                <input type="text" name="city" value="<?= htmlspecialchars($branch['city']) ?>" required>
+                <input type="text" name="city" value="<?= htmlspecialchars($branch['city'] ?? '') ?>">
 
                 <label>UF</label>
-                <input type="text" name="state" maxlength="2" value="<?= htmlspecialchars($branch['state']) ?>" required>
+                <input type="text" name="state" maxlength="2" value="<?= htmlspecialchars($branch['state'] ?? '') ?>">
 
                 <label>Status</label>
                 <select name="active">

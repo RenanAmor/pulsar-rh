@@ -94,6 +94,14 @@
 
             <div class="card">
 
+                <h3>Filiais</h3>
+
+                <h2>0</h2>
+
+            </div>
+
+            <div class="card">
+
                 <h3>Candidatos</h3>
 
                 <h2>0</h2>
