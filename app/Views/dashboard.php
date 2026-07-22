@@ -53,6 +53,8 @@
 
             <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
 
+            <a href="<?= BASE_URL ?>/answers">Respostas</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>
@@ -173,6 +175,14 @@
             <div class="card">
 
                 <h3>Perguntas em Pesquisas</h3>
+
+                <h2>0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Respostas Registradas</h3>
 
                 <h2>0</h2>
 

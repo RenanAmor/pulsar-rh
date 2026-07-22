@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Usuários - <?= APP_NAME ?></title>
+    <title>Respostas - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -25,8 +25,9 @@
         <h2>Pulsar RH</h2>
 
         <nav>
+
             <a href="<?= BASE_URL ?>/dashboard">Dashboard</a>
-            <a class="active" href="<?= BASE_URL ?>/users">Usuários</a>
+            <a href="<?= BASE_URL ?>/users">Usuários</a>
             <a href="<?= BASE_URL ?>/companies">Empresas</a>
             <a href="<?= BASE_URL ?>/branches">Filiais</a>
             <a href="<?= BASE_URL ?>/departments">Setores</a>
@@ -38,8 +39,9 @@
             <a href="<?= BASE_URL ?>/surveys">Pesquisas</a>
             <a href="<?= BASE_URL ?>/questions">Perguntas</a>
             <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
-            <a href="<?= BASE_URL ?>/answers">Respostas</a>
+            <a class="active" href="<?= BASE_URL ?>/answers">Respostas</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
+
         </nav>
 
     </aside>
@@ -48,55 +50,50 @@
 
         <div class="page-header">
 
-            <h1>Usuários</h1>
-
-            <a class="btn-primary" href="<?= BASE_URL ?>/users/create">
-                + Novo Usuário
-            </a>
+            <h1>Respostas das Pesquisas</h1>
 
         </div>
+
+        <p>
+            Selecione uma pesquisa para aplicar (responder em nome de um
+            colaborador) ou para visualizar as respostas já registradas.
+        </p>
 
         <table class="table">
 
             <thead>
 
                 <tr>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Perfil</th>
+                    <th>Empresa</th>
+                    <th>Pesquisa</th>
                     <th>Status</th>
-                    <th width="180">Ações</th>
+                    <th>Respondentes</th>
+                    <th width="220">Ações</th>
                 </tr>
 
             </thead>
 
             <tbody>
 
-            <?php foreach ($users as $user): ?>
+            <?php foreach ($surveys as $survey): ?>
 
                 <tr>
 
-                    <td><?= htmlspecialchars($user['name']) ?></td>
-
-                    <td><?= htmlspecialchars($user['email']) ?></td>
-
-                    <td><?= htmlspecialchars($user['role']) ?></td>
-
-                    <td>
-                        <?= $user['active'] ? 'Ativo' : 'Inativo' ?>
-                    </td>
+                    <td><?= htmlspecialchars($survey['company_name']) ?></td>
+                    <td><?= htmlspecialchars($survey['title']) ?></td>
+                    <td><?= htmlspecialchars($survey['status']) ?></td>
+                    <td><?= (int) $survey['respondents_count'] ?></td>
 
                     <td>
 
                         <a class="btn-action edit"
-                           href="<?= BASE_URL ?>/users/edit?id=<?= $user['id'] ?>">
-                            ✏️ Editar
+                           href="<?= BASE_URL ?>/answers/start?survey_id=<?= $survey['id'] ?>">
+                            📝 Responder
                         </a>
 
-                        <a class="btn-action delete"
-                           href="<?= BASE_URL ?>/users/delete?id=<?= $user['id'] ?>"
-                           onclick="return confirm('Deseja realmente excluir este usuário?')">
-                            🗑️ Excluir
+                        <a class="btn-action edit"
+                           href="<?= BASE_URL ?>/answers/respondents?survey_id=<?= $survey['id'] ?>">
+                            👥 Ver Respostas
                         </a>
 
                     </td>

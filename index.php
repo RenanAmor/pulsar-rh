@@ -8,6 +8,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/app/autoload.php';
 
+use App\Controllers\AnswerController;
 use App\Controllers\AuthController;
 use App\Controllers\BranchController;
 use App\Controllers\CandidateController;
@@ -364,6 +365,43 @@ switch ($path) {
 
     case '/survey-questions/move-down':
         (new SurveyQuestionController())->moveDown();
+        break;
+
+    // RESPOSTAS
+    case '/answers':
+        echo (new AnswerController())->index();
+        break;
+
+    case '/answers/respondents':
+        echo (new AnswerController())->respondents();
+        break;
+
+    case '/answers/view':
+        echo (new AnswerController())->view();
+        break;
+
+    case '/answers/start':
+        echo (new AnswerController())->start();
+        break;
+
+    case '/answers/begin':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new AnswerController())->begin();
+        }
+        break;
+
+    case '/answers/apply':
+        echo (new AnswerController())->apply();
+        break;
+
+    case '/answers/submit':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new AnswerController())->submit();
+        }
+        break;
+
+    case '/answers/complete':
+        echo (new AnswerController())->complete();
         break;
 
     // LOGOUT

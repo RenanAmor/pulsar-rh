@@ -39,6 +39,7 @@
             <a class="active" href="<?= BASE_URL ?>/surveys">Pesquisas</a>
             <a href="<?= BASE_URL ?>/questions">Perguntas</a>
             <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
+            <a href="<?= BASE_URL ?>/answers">Respostas</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
 
         </nav>
