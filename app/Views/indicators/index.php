@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Novo Candidato | <?= APP_NAME ?></title>
+    <title>Indicadores Organizacionais - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -35,12 +35,12 @@
             <a href="<?= BASE_URL ?>/positions">Cargos</a>
             <a href="<?= BASE_URL ?>/employees">Colaboradores</a>
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
-            <a class="active" href="<?= BASE_URL ?>/candidates">Candidatos</a>
+            <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
             <a href="<?= BASE_URL ?>/surveys">Pesquisas</a>
             <a href="<?= BASE_URL ?>/questions">Perguntas</a>
             <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
             <a href="<?= BASE_URL ?>/answers">Respostas</a>
-            <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
+            <a class="active" href="<?= BASE_URL ?>/indicators">Indicadores</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
 
         </nav>
@@ -51,56 +51,54 @@
 
         <div class="page-header">
 
-            <h1>Novo Candidato</h1>
+            <h1>Indicadores Organizacionais</h1>
 
         </div>
 
-        <form method="POST" action="<?= BASE_URL ?>/candidates/store">
+        <p>
+            Selecione uma pesquisa para calcular os indicadores a partir
+            das respostas registradas.
+        </p>
 
-            <label>Empresa</label>
+        <table class="table">
 
-            <select name="company_id" required>
+            <thead>
 
-                <?php foreach ($companies as $company): ?>
+                <tr>
+                    <th>Empresa</th>
+                    <th>Pesquisa</th>
+                    <th>Status</th>
+                    <th width="160">Ações</th>
+                </tr>
 
-                    <option value="<?= $company['id'] ?>">
-                        <?= htmlspecialchars($company['name']) ?>
-                    </option>
+            </thead>
 
-                <?php endforeach; ?>
+            <tbody>
 
-            </select>
+            <?php foreach ($surveys as $survey): ?>
 
-            <label>Vaga</label>
+                <tr>
 
-            <select name="job_id">
+                    <td><?= htmlspecialchars($survey['company_name']) ?></td>
+                    <td><?= htmlspecialchars($survey['title']) ?></td>
+                    <td><?= htmlspecialchars($survey['status']) ?></td>
 
-                <option value="">Selecione</option>
+                    <td>
 
-                <?php foreach ($jobs as $job): ?>
+                        <a class="btn-action edit"
+                           href="<?= BASE_URL ?>/indicators/show?survey_id=<?= $survey['id'] ?>">
+                            📊 Calcular
+                        </a>
 
-                    <option value="<?= $job['id'] ?>">
-                        <?= htmlspecialchars($job['title']) ?>
-                    </option>
+                    </td>
 
-                <?php endforeach; ?>
+                </tr>
 
-            </select>
+            <?php endforeach; ?>
 
-            <label>Nome</label>
-            <input type="text" name="name" required>
+            </tbody>
 
-            <label>E-mail</label>
-            <input type="email" name="email">
-
-            <label>Telefone</label>
-            <input type="text" name="phone">
-
-            <button type="submit">
-                Salvar Candidato
-            </button>
-
-        </form>
+        </table>
 
     </main>
 

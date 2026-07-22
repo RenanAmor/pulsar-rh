@@ -50,6 +50,8 @@
 
             <a href="<?= BASE_URL ?>/answers">Respostas</a>
 
+            <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>

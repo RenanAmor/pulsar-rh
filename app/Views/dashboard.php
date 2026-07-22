@@ -55,6 +55,8 @@
 
             <a href="<?= BASE_URL ?>/answers">Respostas</a>
 
+            <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>
@@ -187,6 +189,22 @@
                 <h2>0</h2>
 
             </div>
+
+        </section>
+
+        <section class="card">
+
+            <h2>Indicadores Organizacionais</h2>
+
+            <p>
+                Índice Geral, classificação, participação e indicadores por
+                categoria e dimensão são calculados automaticamente pelo
+                Motor de Indicadores a partir das respostas de cada pesquisa.
+            </p>
+
+            <a class="btn-primary" href="<?= BASE_URL ?>/indicators">
+                Ver Indicadores
+            </a>
 
         </section>
 

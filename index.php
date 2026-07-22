@@ -16,6 +16,7 @@ use App\Controllers\CompanyController;
 use App\Controllers\DashboardController;
 use App\Controllers\DepartmentController;
 use App\Controllers\EmployeeController;
+use App\Controllers\IndicatorController;
 use App\Controllers\JobController;
 use App\Controllers\PositionController;
 use App\Controllers\QuestionController;
@@ -402,6 +403,15 @@ switch ($path) {
 
     case '/answers/complete':
         echo (new AnswerController())->complete();
+        break;
+
+    // INDICADORES ORGANIZACIONAIS
+    case '/indicators':
+        echo (new IndicatorController())->index();
+        break;
+
+    case '/indicators/show':
+        echo (new IndicatorController())->show();
         break;
 
     // LOGOUT
