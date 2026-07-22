@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Pesquisas - <?= APP_NAME ?></title>
+    <title>Perguntas - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -36,8 +36,8 @@
             <a href="<?= BASE_URL ?>/employees">Colaboradores</a>
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
-            <a class="active" href="<?= BASE_URL ?>/surveys">Pesquisas</a>
-            <a href="<?= BASE_URL ?>/questions">Perguntas</a>
+            <a href="<?= BASE_URL ?>/surveys">Pesquisas</a>
+            <a class="active" href="<?= BASE_URL ?>/questions">Perguntas</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
 
         </nav>
@@ -48,10 +48,10 @@
 
         <div class="page-header">
 
-            <h1>Pesquisas</h1>
+            <h1>Biblioteca Psicométrica</h1>
 
-            <a class="btn-primary" href="<?= BASE_URL ?>/surveys/create">
-                + Nova Pesquisa
+            <a class="btn-primary" href="<?= BASE_URL ?>/questions/create">
+                + Nova Pergunta
             </a>
 
         </div>
@@ -61,10 +61,12 @@
             <thead>
 
                 <tr>
+                    <th>Categoria</th>
+                    <th>Dimensão</th>
+                    <th>Pergunta</th>
+                    <th>Tipo de Resposta</th>
+                    <th>Peso</th>
                     <th>Empresa</th>
-                    <th>Título</th>
-                    <th>Período</th>
-                    <th>Anônima</th>
                     <th>Status</th>
                     <th width="180">Ações</th>
                 </tr>
@@ -73,30 +75,28 @@
 
             <tbody>
 
-            <?php foreach ($surveys as $survey): ?>
+            <?php foreach ($questions as $question): ?>
 
                 <tr>
 
-                    <td><?= htmlspecialchars($survey['company_name']) ?></td>
-                    <td><?= htmlspecialchars($survey['title']) ?></td>
-                    <td>
-                        <?= htmlspecialchars($survey['start_date'] ?? '') ?>
-                        —
-                        <?= htmlspecialchars($survey['end_date'] ?? '') ?>
-                    </td>
-                    <td><?= $survey['anonymous'] ? 'Sim' : 'Não' ?></td>
-                    <td><?= htmlspecialchars($survey['status']) ?></td>
+                    <td><?= htmlspecialchars($question['category']) ?></td>
+                    <td><?= htmlspecialchars($question['dimension']) ?></td>
+                    <td><?= htmlspecialchars($question['question']) ?></td>
+                    <td><?= htmlspecialchars($question['answer_type']) ?></td>
+                    <td><?= htmlspecialchars((string) $question['weight']) ?></td>
+                    <td><?= htmlspecialchars($question['company_name'] ?? 'Genérica (todas as empresas)') ?></td>
+                    <td><?= $question['active'] ? 'Ativa' : 'Inativa' ?></td>
 
                     <td>
 
                         <a class="btn-action edit"
-                           href="<?= BASE_URL ?>/surveys/edit?id=<?= $survey['id'] ?>">
+                           href="<?= BASE_URL ?>/questions/edit?id=<?= $question['id'] ?>">
                             ✏️ Editar
                         </a>
 
                         <a class="btn-action delete"
-                           href="<?= BASE_URL ?>/surveys/delete?id=<?= $survey['id'] ?>"
-                           onclick="return confirm('Deseja realmente excluir esta pesquisa?')">
+                           href="<?= BASE_URL ?>/questions/delete?id=<?= $question['id'] ?>"
+                           onclick="return confirm('Deseja realmente excluir esta pergunta?')">
                             🗑️ Excluir
                         </a>
 
