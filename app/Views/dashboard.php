@@ -47,6 +47,8 @@
 
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
 
+            <a href="<?= BASE_URL ?>/surveys">Pesquisas</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>
@@ -143,6 +145,14 @@
             <div class="card">
 
                 <h3>Candidatos</h3>
+
+                <h2>0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Pesquisas</h3>
 
                 <h2>0</h2>
 

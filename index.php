@@ -17,6 +17,7 @@ use App\Controllers\DepartmentController;
 use App\Controllers\EmployeeController;
 use App\Controllers\JobController;
 use App\Controllers\PositionController;
+use App\Controllers\SurveyController;
 use App\Controllers\TeamController;
 use App\Controllers\UserController;
 
@@ -272,6 +273,35 @@ switch ($path) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             (new CandidateController())->store();
         }
+        break;
+
+    // PESQUISAS
+    case '/surveys':
+        echo (new SurveyController())->index();
+        break;
+
+    case '/surveys/create':
+        echo (new SurveyController())->create();
+        break;
+
+    case '/surveys/store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new SurveyController())->store();
+        }
+        break;
+
+    case '/surveys/edit':
+        echo (new SurveyController())->edit();
+        break;
+
+    case '/surveys/update':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new SurveyController())->update();
+        }
+        break;
+
+    case '/surveys/delete':
+        (new SurveyController())->delete();
         break;
 
     // LOGOUT

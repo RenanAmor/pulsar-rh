@@ -42,6 +42,8 @@
 
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
 
+            <a href="<?= BASE_URL ?>/surveys">Pesquisas</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>
