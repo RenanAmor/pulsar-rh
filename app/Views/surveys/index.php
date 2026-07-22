@@ -38,6 +38,7 @@
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
             <a class="active" href="<?= BASE_URL ?>/surveys">Pesquisas</a>
             <a href="<?= BASE_URL ?>/questions">Perguntas</a>
+            <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
 
         </nav>
@@ -92,6 +93,11 @@
                         <a class="btn-action edit"
                            href="<?= BASE_URL ?>/surveys/edit?id=<?= $survey['id'] ?>">
                             ✏️ Editar
+                        </a>
+
+                        <a class="btn-action edit"
+                           href="<?= BASE_URL ?>/survey-questions/manage?survey_id=<?= $survey['id'] ?>">
+                            🧩 Montar
                         </a>
 
                         <a class="btn-action delete"

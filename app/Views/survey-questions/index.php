@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Perguntas - <?= APP_NAME ?></title>
+    <title>Montagem de Pesquisas - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -37,8 +37,8 @@
             <a href="<?= BASE_URL ?>/jobs">Vagas</a>
             <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
             <a href="<?= BASE_URL ?>/surveys">Pesquisas</a>
-            <a class="active" href="<?= BASE_URL ?>/questions">Perguntas</a>
-            <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
+            <a href="<?= BASE_URL ?>/questions">Perguntas</a>
+            <a class="active" href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
 
         </nav>
@@ -49,26 +49,24 @@
 
         <div class="page-header">
 
-            <h1>Biblioteca Psicométrica</h1>
-
-            <a class="btn-primary" href="<?= BASE_URL ?>/questions/create">
-                + Nova Pergunta
-            </a>
+            <h1>Montagem de Pesquisas</h1>
 
         </div>
+
+        <p>
+            Selecione uma pesquisa para adicionar, remover ou reordenar as
+            perguntas da Biblioteca Psicométrica utilizadas nela.
+        </p>
 
         <table class="table">
 
             <thead>
 
                 <tr>
-                    <th>Categoria</th>
-                    <th>Dimensão</th>
-                    <th>Pergunta</th>
-                    <th>Tipo de Resposta</th>
-                    <th>Peso</th>
                     <th>Empresa</th>
+                    <th>Pesquisa</th>
                     <th>Status</th>
+                    <th>Perguntas Vinculadas</th>
                     <th width="180">Ações</th>
                 </tr>
 
@@ -76,29 +74,20 @@
 
             <tbody>
 
-            <?php foreach ($questions as $question): ?>
+            <?php foreach ($surveys as $survey): ?>
 
                 <tr>
 
-                    <td><?= htmlspecialchars($question['category']) ?></td>
-                    <td><?= htmlspecialchars($question['dimension']) ?></td>
-                    <td><?= htmlspecialchars($question['question']) ?></td>
-                    <td><?= htmlspecialchars($question['answer_type']) ?></td>
-                    <td><?= htmlspecialchars((string) $question['weight']) ?></td>
-                    <td><?= htmlspecialchars($question['company_name'] ?? 'Genérica (todas as empresas)') ?></td>
-                    <td><?= $question['active'] ? 'Ativa' : 'Inativa' ?></td>
+                    <td><?= htmlspecialchars($survey['company_name']) ?></td>
+                    <td><?= htmlspecialchars($survey['title']) ?></td>
+                    <td><?= htmlspecialchars($survey['status']) ?></td>
+                    <td><?= (int) $survey['questions_count'] ?></td>
 
                     <td>
 
                         <a class="btn-action edit"
-                           href="<?= BASE_URL ?>/questions/edit?id=<?= $question['id'] ?>">
-                            ✏️ Editar
-                        </a>
-
-                        <a class="btn-action delete"
-                           href="<?= BASE_URL ?>/questions/delete?id=<?= $question['id'] ?>"
-                           onclick="return confirm('Deseja realmente excluir esta pergunta?')">
-                            🗑️ Excluir
+                           href="<?= BASE_URL ?>/survey-questions/manage?survey_id=<?= $survey['id'] ?>">
+                            🧩 Montar
                         </a>
 
                     </td>

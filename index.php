@@ -19,6 +19,7 @@ use App\Controllers\JobController;
 use App\Controllers\PositionController;
 use App\Controllers\QuestionController;
 use App\Controllers\SurveyController;
+use App\Controllers\SurveyQuestionController;
 use App\Controllers\TeamController;
 use App\Controllers\UserController;
 
@@ -332,6 +333,37 @@ switch ($path) {
 
     case '/questions/delete':
         (new QuestionController())->delete();
+        break;
+
+    // MONTAGEM DE PESQUISAS
+    case '/survey-questions':
+        echo (new SurveyQuestionController())->index();
+        break;
+
+    case '/survey-questions/manage':
+        echo (new SurveyQuestionController())->manage();
+        break;
+
+    case '/survey-questions/add':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new SurveyQuestionController())->add();
+        }
+        break;
+
+    case '/survey-questions/remove':
+        (new SurveyQuestionController())->remove();
+        break;
+
+    case '/survey-questions/toggle-required':
+        (new SurveyQuestionController())->toggleRequired();
+        break;
+
+    case '/survey-questions/move-up':
+        (new SurveyQuestionController())->moveUp();
+        break;
+
+    case '/survey-questions/move-down':
+        (new SurveyQuestionController())->moveDown();
         break;
 
     // LOGOUT
