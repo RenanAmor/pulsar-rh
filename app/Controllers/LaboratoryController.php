@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use App\Laboratory\ScenarioGenerator;
 use App\Services\AuthService;
+use App\Services\QuestionService;
 
 class LaboratoryController
 {
     private ScenarioGenerator $generator;
     private AuthService $auth;
+    private QuestionService $questions;
 
     public function __construct()
     {
         $this->generator = new ScenarioGenerator();
         $this->auth = new AuthService();
+        $this->questions = new QuestionService();
     }
 
     private function protect(): void
@@ -62,5 +65,53 @@ class LaboratoryController
 
         header('Location: ' . BASE_URL . '/laboratory');
         exit;
+    }
+
+    private function hasActiveQuestions(): bool
+    {
+        foreach ($this->questions->all() as $question) {
+            if ((int) $question['active'] === 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function demo(): string
+    {
+        $this->protect();
+
+        $scenarios = $this->generator->scenarios();
+        $currentDemo = $this->generator->currentDemoCompany();
+        $noActiveQuestions = !$this->hasActiveQuestions();
+
+        ob_start();
+        require __DIR__ . '/../Views/laboratory/demo.php';
+        return ob_get_clean();
+    }
+
+    public function generateDemo(): string
+    {
+        $this->protect();
+
+        if (!$this->hasActiveQuestions()) {
+            $scenarios = $this->generator->scenarios();
+            $currentDemo = $this->generator->currentDemoCompany();
+            $noActiveQuestions = true;
+
+            ob_start();
+            require __DIR__ . '/../Views/laboratory/demo.php';
+            return ob_get_clean();
+        }
+
+        $scenario = trim($_POST['scenario'] ?? '') ?: 'saudavel';
+
+        $result = $this->generator->generateDemo($scenario);
+        $dashboardUrl = BASE_URL . '/dashboard?company_id=' . $result['company_id'];
+
+        ob_start();
+        require __DIR__ . '/../Views/laboratory/demo_result.php';
+        return ob_get_clean();
     }
 }

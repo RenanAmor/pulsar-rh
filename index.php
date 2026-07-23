@@ -457,6 +457,16 @@ switch ($path) {
         (new LaboratoryController())->clear();
         break;
 
+    case '/laboratory/demo':
+        echo (new LaboratoryController())->demo();
+        break;
+
+    case '/laboratory/demo/generate':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            echo (new LaboratoryController())->generateDemo();
+        }
+        break;
+
     // ORGANIZATIONAL INTELLIGENCE ENGINE (OIE)
     case '/oie':
         echo (new OIEController())->index();

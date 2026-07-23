@@ -51,7 +51,22 @@
 
         <div class="card">
 
-            <h2>Gerar Ambiente</h2>
+            <h2>Geração Rápida de Demonstração</h2>
+
+            <p>
+                Prefere um clique só? Escolha um cenário e vá direto para o
+                Dashboard Executivo com os resultados prontos.
+            </p>
+
+            <a class="btn-primary" href="<?= BASE_URL ?>/laboratory/demo">
+                🚀 Gerar Empresa de Demonstração
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Gerar Ambiente (avançado)</h2>
 
             <form method="POST" action="<?= BASE_URL ?>/laboratory/generate">
 

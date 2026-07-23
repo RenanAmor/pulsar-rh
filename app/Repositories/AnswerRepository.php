@@ -23,6 +23,11 @@ class AnswerRepository
         return $this->model->save($data);
     }
 
+    public function createMany(array $rows): bool
+    {
+        return $this->model->createMany($rows);
+    }
+
     public function allForEmployeeSurvey(int $surveyId, int $employeeId): array
     {
         return $this->model->allForEmployeeSurvey($surveyId, $employeeId);

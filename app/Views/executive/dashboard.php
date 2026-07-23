@@ -44,6 +44,9 @@ $severityClass = [
             <div class="card">
                 <h2>Ainda não há dados suficientes</h2>
                 <p><?= htmlspecialchars($dashboard['error']) ?></p>
+                <a class="btn-primary" href="<?= BASE_URL ?>/laboratory/demo">
+                    🚀 Gerar Empresa de Demonstração
+                </a>
             </div>
 
         <?php else: ?>
@@ -60,6 +63,8 @@ $severityClass = [
                     <?php if ($dashboard['greeting']['analyzedAt']): ?>
                         Análise realizada em <?= htmlspecialchars($dashboard['greeting']['analyzedAt']) ?>
                     <?php endif; ?>
+                    &nbsp;&middot;&nbsp;
+                    <a href="<?= BASE_URL ?>/laboratory/demo">🧪 Gerar Nova Demonstração</a>
                 </p>
 
             </header>

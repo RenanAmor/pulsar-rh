@@ -46,16 +46,20 @@ class AnswerGenerator
         shuffle($shuffled);
         $respondents = array_slice($shuffled, 0, $respondentsCount);
 
+        $rows = [];
+
         foreach ($respondents as $employeeId) {
             foreach ($questions as $question) {
-                $this->answerQuestion($companyId, $surveyId, (int) $employeeId, $question, $scenarioKey);
+                $rows[] = $this->buildAnswerRow($companyId, $surveyId, (int) $employeeId, $question, $scenarioKey);
             }
         }
+
+        $this->answers->saveMany($rows);
 
         return count($respondents);
     }
 
-    private function answerQuestion(int $companyId, int $surveyId, int $employeeId, array $question, string $scenarioKey): void
+    private function buildAnswerRow(int $companyId, int $surveyId, int $employeeId, array $question, string $scenarioKey): array
     {
         $dimension = $question['dimension'];
         $percentage = $this->profile->samplePercentage($scenarioKey, $dimension);
@@ -85,13 +89,13 @@ class AnswerGenerator
                 break;
         }
 
-        $this->answers->save([
+        return [
             'company_id'  => $companyId,
             'survey_id'   => $surveyId,
             'employee_id' => $employeeId,
             'question_id' => (int) $question['question_id'],
             'score'       => $score,
             'answer_text' => $text,
-        ]);
+        ];
     }
 }

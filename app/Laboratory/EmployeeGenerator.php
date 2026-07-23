@@ -15,17 +15,6 @@ class EmployeeGenerator
         $this->names = new NameGenerator();
     }
 
-    private function findEmployeeIdByCpf(string $cpf): ?int
-    {
-        foreach ($this->employees->all() as $employee) {
-            if ($employee['cpf'] === $cpf) {
-                return (int) $employee['id'];
-            }
-        }
-
-        return null;
-    }
-
     /**
      * @param array $organization Estrutura retornada por OrganizationGenerator::generate()
      * @return int[] IDs dos colaboradores gerados
@@ -36,13 +25,14 @@ class EmployeeGenerator
         $teamIds = $organization['team_ids'];
         $positionIds = $organization['position_ids'];
 
-        $employeeIds = [];
+        $cpfs = [];
 
         for ($i = 0; $i < $count; $i++) {
             $slot = $i % count($departmentIds);
 
             $name = $this->names->randomFullName() . ' ' . ($i + 1);
             $cpf = $this->names->fakeCpf();
+            $cpfs[] = $cpf;
 
             $admissionDaysAgo = random_int(30, 1500);
             $admissionDate = (new \DateTimeImmutable())->modify("-{$admissionDaysAgo} days")->format('Y-m-d');
@@ -66,11 +56,21 @@ class EmployeeGenerator
                 'employment_type'  => 'CLT',
                 'status'           => 'Ativo',
             ]);
+        }
 
-            $employeeId = $this->findEmployeeIdByCpf($cpf);
+        // Resolve todos os IDs com um único scan da tabela em vez de um scan
+        // por colaborador (evita custo O(n²) ao gerar volumes maiores).
+        $cpfToId = [];
 
-            if ($employeeId !== null) {
-                $employeeIds[] = $employeeId;
+        foreach ($this->employees->all() as $employee) {
+            $cpfToId[$employee['cpf']] = (int) $employee['id'];
+        }
+
+        $employeeIds = [];
+
+        foreach ($cpfs as $cpf) {
+            if (isset($cpfToId[$cpf])) {
+                $employeeIds[] = $cpfToId[$cpf];
             }
         }
 

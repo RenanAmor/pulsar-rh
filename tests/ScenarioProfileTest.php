@@ -25,9 +25,9 @@ function check(string $label, bool $condition, int &$failures): void
 
 // Todos os 10 cenários existem e têm rótulo
 $expectedScenarios = [
-    'saudavel', 'crescimento', 'alta_rotatividade', 'problemas_lideranca',
-    'baixa_comunicacao', 'baixo_engajamento', 'alto_burnout',
-    'conflitos_equipes', 'baixa_satisfacao', 'mudanca_organizacional',
+    'excelente', 'saudavel', 'cultura_forte', 'lideranca_fraca',
+    'burnout_elevado', 'alto_turnover', 'comunicacao_deficiente',
+    'crise', 'transformacao', 'aleatoria',
 ];
 
 check(
@@ -42,30 +42,30 @@ foreach ($expectedScenarios as $key) {
 
 // Amostragem sempre respeita o intervalo alvo do cenário
 for ($i = 0; $i < 50; $i++) {
-    $sample = $profile->samplePercentage('alto_burnout', 'Burnout');
-    if ($sample < 75 || $sample > 95) {
+    $sample = $profile->samplePercentage('burnout_elevado', 'Burnout');
+    if ($sample < 78 || $sample > 95) {
         $failures++;
-        echo "FAIL: amostra de Burnout no cenário alto_burnout fora do intervalo [75,95]: {$sample}\n";
+        echo "FAIL: amostra de Burnout no cenário burnout_elevado fora do intervalo [78,95]: {$sample}\n";
         break;
     }
 }
-echo "PASS: 50 amostras de Burnout (cenário alto_burnout) dentro do intervalo [75,95]\n";
+echo "PASS: 50 amostras de Burnout (cenário burnout_elevado) dentro do intervalo [78,95]\n";
 
 for ($i = 0; $i < 50; $i++) {
-    $sample = $profile->samplePercentage('problemas_lideranca', 'Liderança');
-    if ($sample < 15 || $sample > 35) {
+    $sample = $profile->samplePercentage('lideranca_fraca', 'Liderança');
+    if ($sample < 15 || $sample > 32) {
         $failures++;
-        echo "FAIL: amostra de Liderança no cenário problemas_lideranca fora do intervalo [15,35]: {$sample}\n";
+        echo "FAIL: amostra de Liderança no cenário lideranca_fraca fora do intervalo [15,32]: {$sample}\n";
         break;
     }
 }
-echo "PASS: 50 amostras de Liderança (cenário problemas_lideranca) dentro do intervalo [15,35]\n";
+echo "PASS: 50 amostras de Liderança (cenário lideranca_fraca) dentro do intervalo [15,32]\n";
 
 // dimensão sem override cai no intervalo default do cenário
-[$defaultMin, $defaultMax] = $profile->targetRangeFor('problemas_lideranca', 'Reconhecimento');
+[$defaultMin, $defaultMax] = $profile->targetRangeFor('lideranca_fraca', 'Reconhecimento');
 check(
     'Dimensão sem override usa o intervalo default do cenário',
-    [$defaultMin, $defaultMax] === ScenarioProfile::SCENARIOS['problemas_lideranca']['default'],
+    [$defaultMin, $defaultMax] === ScenarioProfile::SCENARIOS['lideranca_fraca']['default'],
     $failures
 );
 

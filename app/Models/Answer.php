@@ -85,6 +85,53 @@ class Answer
         return $stmt->execute($data);
     }
 
+    /**
+     * Insere várias respostas em lote, sem verificação prévia de duplicidade.
+     * Uso exclusivo do Laboratório Organizacional, onde as respostas geradas
+     * pertencem sempre a uma pesquisa/empresa recém-criada (não há risco de
+     * conflito com uma resposta existente, ao contrário de save()).
+     *
+     * @param array $rows Cada item com company_id, survey_id, employee_id, question_id, score, answer_text
+     */
+    public function createMany(array $rows): bool
+    {
+        if (empty($rows)) {
+            return true;
+        }
+
+        foreach (array_chunk($rows, 500) as $chunk) {
+            $placeholders = [];
+            $values = [];
+
+            foreach ($chunk as $row) {
+                $placeholders[] = '(?, ?, ?, ?, ?, ?)';
+                array_push(
+                    $values,
+                    $row['company_id'],
+                    $row['survey_id'],
+                    $row['employee_id'],
+                    $row['question_id'],
+                    $row['score'],
+                    $row['answer_text']
+                );
+            }
+
+            $sql = '
+                INSERT INTO answers
+                (company_id, survey_id, employee_id, question_id, score, answer_text)
+                VALUES ' . implode(', ', $placeholders) . '
+            ';
+
+            $stmt = $this->db->prepare($sql);
+
+            if (!$stmt->execute($values)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public function allForEmployeeSurvey(int $surveyId, int $employeeId): array
     {
         $stmt = $this->db->prepare("

@@ -85,16 +85,16 @@ class OrganizationGenerator
         return null;
     }
 
-    public function generate(string $scenarioLabel): array
+    public function generate(string $scenarioLabel, string $tag = '[LAB]'): array
     {
-        $tag = $this->names->uniqueTag();
-        $tradeName = "[LAB] {$scenarioLabel} {$tag}";
+        $uniqueTag = $this->names->uniqueTag();
+        $tradeName = "{$tag} {$scenarioLabel} {$uniqueTag}";
 
         $this->companies->create([
             'corporate_name' => "{$tradeName} Ltda",
             'trade_name'     => $tradeName,
-            'document'       => "LAB{$tag}00000191",
-            'email'          => "contato@lab-{$tag}.local",
+            'document'       => "LAB{$uniqueTag}00000191",
+            'email'          => "contato@lab-{$uniqueTag}.local",
             'phone'          => '(00) 0000-0000',
             'website'        => null,
             'sector'         => 'Laboratório Organizacional',
@@ -107,13 +107,13 @@ class OrganizationGenerator
 
         $companyId = $this->findCompanyIdByTradeName($tradeName);
 
-        $branchDocument = "LAB-BR-{$tag}";
+        $branchDocument = "LAB-BR-{$uniqueTag}";
 
         $this->branches->create([
             'company_id' => $companyId,
             'name'       => 'Matriz',
             'document'   => $branchDocument,
-            'email'      => "matriz@lab-{$tag}.local",
+            'email'      => "matriz@lab-{$uniqueTag}.local",
             'phone'      => '(00) 0000-0000',
             'city'       => 'São Paulo',
             'state'      => 'SP',
@@ -127,7 +127,7 @@ class OrganizationGenerator
         $positionIds = [];
 
         foreach (self::DEPARTMENTS as $index => $departmentName) {
-            $departmentCode = "LAB-DEP-{$tag}-{$index}";
+            $departmentCode = "LAB-DEP-{$uniqueTag}-{$index}";
 
             $this->departments->create([
                 'company_id'  => $companyId,
@@ -144,7 +144,7 @@ class OrganizationGenerator
             $departmentId = $this->findDepartmentIdByCode($departmentCode);
             $departmentIds[] = $departmentId;
 
-            $teamCode = "LAB-TEAM-{$tag}-{$index}";
+            $teamCode = "LAB-TEAM-{$uniqueTag}-{$index}";
 
             $this->teams->create([
                 'company_id'    => $companyId,
@@ -160,7 +160,7 @@ class OrganizationGenerator
             $teamIds[] = $this->findTeamIdByCode($teamCode);
 
             foreach (self::POSITIONS_PER_DEPARTMENT as $positionIndex => $positionName) {
-                $positionCode = "LAB-POS-{$tag}-{$index}-{$positionIndex}";
+                $positionCode = "LAB-POS-{$uniqueTag}-{$index}-{$positionIndex}";
 
                 $this->positions->create([
                     'company_id'    => $companyId,
