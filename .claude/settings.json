@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(git fetch origin 2>&1; Write-Output \"EXIT:$LASTEXITCODE\")",
+      "PowerShell(icacls .git\\\\FETCH_HEAD)",
+      "Bash(tasklist)",
+      "Bash(git merge *)",
+      "Bash(composer validate *)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(composer dump-autoload *)",
+      "Bash(php -r ' *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(rm -f .git/COMMIT_EDITMSG)",
+      "Bash(git rev-list *)",
+      "Bash(git checkout *)",
+      "Bash(git pull *)",
+      "Bash(php tests/IndicatorCalculatorTest.php)",
+      "Bash(php tests/ScenarioProfileTest.php)",
+      "Bash(php tests/OIETest.php)",
+      "Read(//tmp/**)",
+      "Bash(php tests/AITest.php)"
+    ],
+    "additionalDirectories": [
+      "C:\\Projetos\\L369\\pulsar-rh\\.git"
+    ]
+  }
+}
