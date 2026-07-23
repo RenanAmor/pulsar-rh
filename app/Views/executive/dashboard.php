@@ -78,19 +78,81 @@ $severityClass = [
 
             </section>
 
-            <?php if (!empty($dashboard['topAlerts'])): ?>
+            <?php if (!isset($assistant['error'])): ?>
 
-                <section class="card exec-alerts">
+                <section class="card assistant-message">
+                    <p><?= htmlspecialchars($assistant['executiveMessage']) ?></p>
+                </section>
 
-                    <h2>Principais Alertas</h2>
+                <section class="card assistant-summary">
 
-                    <ul class="alert-list">
+                    <h2>Resumo Inteligente</h2>
 
-                        <?php foreach ($dashboard['topAlerts'] as $alert): ?>
+                    <p><strong>Situação atual.</strong> <?= htmlspecialchars($assistant['summary']['currentSituation']) ?></p>
+                    <p><strong>Evolução.</strong> <?= htmlspecialchars($assistant['summary']['evolution']) ?></p>
+                    <p><strong>Tendência.</strong> <?= htmlspecialchars($assistant['summary']['trend']) ?></p>
 
-                            <li class="<?= $severityClass[$alert['severity']] ?? '' ?>">
-                                <?= htmlspecialchars($alert['headline']) ?>
-                            </li>
+                </section>
+
+                <?php if (!empty($assistant['priorityTopics'])): ?>
+
+                    <section class="card assistant-topics">
+
+                        <h2>Assuntos Prioritários</h2>
+
+                        <ul class="alert-list">
+
+                            <?php foreach ($assistant['priorityTopics'] as $topic): ?>
+
+                                <li class="<?= $severityClass[$topic['severity']] ?? '' ?>">
+                                    <strong><?= htmlspecialchars($topic['theme']) ?>.</strong>
+                                    <?= htmlspecialchars($topic['headline']) ?>
+                                </li>
+
+                            <?php endforeach; ?>
+
+                        </ul>
+
+                    </section>
+
+                <?php endif; ?>
+
+                <section class="card assistant-actions">
+
+                    <h2>Ações Recomendadas</h2>
+
+                    <?php if (empty($assistant['recommendedActions'])): ?>
+
+                        <p>Nenhuma ação crítica no momento — mantenha as boas práticas atuais.</p>
+
+                    <?php else: ?>
+
+                        <ol class="action-list">
+
+                            <?php foreach ($assistant['recommendedActions'] as $action): ?>
+
+                                <li class="<?= $severityClass[$action['priority']] ?? '' ?>">
+                                    <strong><?= htmlspecialchars($action['title']) ?></strong>
+                                    <p><?= htmlspecialchars($action['reason']) ?></p>
+                                </li>
+
+                            <?php endforeach; ?>
+
+                        </ol>
+
+                    <?php endif; ?>
+
+                </section>
+
+                <section class="card assistant-questions">
+
+                    <h2>Perguntas Estratégicas</h2>
+
+                    <ul class="question-list">
+
+                        <?php foreach ($assistant['strategicQuestions'] as $question): ?>
+
+                            <li><?= htmlspecialchars($question) ?></li>
 
                         <?php endforeach; ?>
 
@@ -99,55 +161,6 @@ $severityClass = [
                 </section>
 
             <?php endif; ?>
-
-            <section class="card exec-changes">
-
-                <h2>O que Mudou</h2>
-
-                <?php if ($dashboard['changes']['message'] !== null): ?>
-
-                    <p><?= htmlspecialchars($dashboard['changes']['message']) ?></p>
-
-                <?php else: ?>
-
-                    <div class="change-chips">
-
-                        <?php foreach ($dashboard['changes']['items'] as $item): ?>
-
-                            <span class="chip"><?= $item['arrow'] ?> <?= htmlspecialchars($item['label']) ?></span>
-
-                        <?php endforeach; ?>
-
-                    </div>
-
-                <?php endif; ?>
-
-            </section>
-
-            <section class="card exec-priority <?= $severityClass[$dashboard['priorityOfDay']['severity']] ?? '' ?>">
-
-                <h2>Prioridade do Dia</h2>
-
-                <p><?= htmlspecialchars($dashboard['priorityOfDay']['title']) ?></p>
-
-            </section>
-
-            <section class="card exec-recommendation">
-
-                <h2>Recomendação Principal</h2>
-
-                <?php if ($dashboard['mainRecommendation']['message'] !== null): ?>
-
-                    <p><?= htmlspecialchars($dashboard['mainRecommendation']['message']) ?></p>
-
-                <?php else: ?>
-
-                    <h3><?= htmlspecialchars($dashboard['mainRecommendation']['title']) ?></h3>
-                    <p><?= htmlspecialchars($dashboard['mainRecommendation']['reason']) ?></p>
-
-                <?php endif; ?>
-
-            </section>
 
         <?php endif; ?>
 

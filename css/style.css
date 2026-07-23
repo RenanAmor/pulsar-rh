@@ -564,7 +564,87 @@ select option{
     color:#d7dde4;
     margin-top:8px;
     line-height:1.6;
-}/* ===========================================================
+}
+
+/* ===========================================================
+   ASSISTENTE EXECUTIVO
+=========================================================== */
+
+.assistant-message, .assistant-summary, .assistant-topics, .assistant-actions, .assistant-questions{
+    margin-bottom:25px;
+}
+
+.assistant-message p{
+    color:#fff;
+    font-size:22px;
+    font-weight:500;
+    line-height:1.5;
+}
+
+.assistant-summary p{
+    color:#d7dde4;
+    line-height:1.7;
+    margin-top:10px;
+}
+
+.assistant-summary p strong{
+    color:#D4AF37;
+}
+
+.action-list{
+    list-style:none;
+    counter-reset:action;
+    margin:15px 0 0;
+    padding:0;
+}
+
+.action-list li{
+    counter-increment:action;
+    position:relative;
+    padding:14px 18px 14px 46px;
+    margin-bottom:10px;
+    border-radius:12px;
+    background:rgba(255,255,255,.04);
+    border-left:4px solid #c9d2da;
+    color:#fff;
+}
+
+.action-list li::before{
+    content:counter(action);
+    position:absolute;
+    left:16px;
+    top:14px;
+    color:#D4AF37;
+    font-weight:700;
+}
+
+.action-list li p{
+    color:#d7dde4;
+    margin-top:6px;
+    line-height:1.5;
+}
+
+.action-list li.sev-critica{ border-left-color:#e74c3c; }
+.action-list li.sev-alta{ border-left-color:#e8a33d; }
+.action-list li.sev-media{ border-left-color:#D4AF37; }
+
+.question-list{
+    list-style:none;
+    margin:15px 0 0;
+    padding:0;
+}
+
+.question-list li{
+    padding:14px 18px;
+    margin-bottom:10px;
+    border-radius:12px;
+    background:rgba(212,175,55,.08);
+    border-left:4px solid #D4AF37;
+    color:#f1e9d2;
+    font-style:italic;
+}
+
+/* ===========================================================
    BREADCRUMB
 =========================================================== */
 
