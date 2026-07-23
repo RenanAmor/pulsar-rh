@@ -432,4 +432,136 @@ select option{
 
 .card{
     box-shadow:0 15px 35px rgba(0,0,0,.25);
+}/* ===========================================================
+   DASHBOARD EXECUTIVO
+=========================================================== */
+
+.exec-greeting{
+    margin-bottom:35px;
+}
+
+.exec-greeting h1{
+    color:#fff;
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.exec-greeting p{
+    color:#c9d2da;
+    font-size:16px;
+}
+
+.exec-hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    border-left:6px solid #D4AF37;
+    border-radius:18px;
+    padding:32px 40px;
+    margin-bottom:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.exec-hero-label{
+    display:block;
+    color:#c9d2da;
+    margin-bottom:8px;
+}
+
+.exec-hero-tier{
+    color:#fff;
+    font-size:36px;
+}
+
+.exec-hero-score{
+    text-align:right;
+    color:#c9d2da;
+}
+
+.exec-hero-score strong{
+    display:block;
+    font-size:52px;
+    color:#D4AF37;
+    line-height:1;
+}
+
+.exec-hero.tier-excelente{ border-left-color:#3fb950; }
+.exec-hero.tier-excelente .exec-hero-tier{ color:#3fb950; }
+
+.exec-hero.tier-saudavel{ border-left-color:#D4AF37; }
+.exec-hero.tier-saudavel .exec-hero-tier{ color:#D4AF37; }
+
+.exec-hero.tier-atencao{ border-left-color:#e8a33d; }
+.exec-hero.tier-atencao .exec-hero-tier{ color:#e8a33d; }
+
+.exec-hero.tier-critico{ border-left-color:#e74c3c; }
+.exec-hero.tier-critico .exec-hero-tier{ color:#e74c3c; }
+
+.exec-alerts, .exec-changes, .exec-priority, .exec-recommendation{
+    margin-bottom:25px;
+}
+
+.alert-list{
+    list-style:none;
+    margin:15px 0 0;
+    padding:0;
+}
+
+.alert-list li{
+    padding:14px 18px;
+    margin-bottom:10px;
+    border-radius:12px;
+    background:rgba(255,255,255,.04);
+    border-left:4px solid #c9d2da;
+    color:#fff;
+}
+
+.alert-list li.sev-critica{ border-left-color:#e74c3c; }
+.alert-list li.sev-alta{ border-left-color:#e8a33d; }
+.alert-list li.sev-media{ border-left-color:#D4AF37; }
+
+.change-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:15px;
+}
+
+.chip{
+    display:inline-block;
+    padding:10px 16px;
+    border-radius:999px;
+    background:rgba(212,175,55,.12);
+    border:1px solid rgba(212,175,55,.3);
+    color:#fff;
+    font-weight:500;
+}
+
+.exec-priority{
+    border-left:6px solid #D4AF37;
+}
+
+.exec-priority p{
+    color:#fff;
+    font-size:20px;
+    font-weight:500;
+    margin-top:10px;
+}
+
+.exec-priority.sev-critica{ border-left-color:#e74c3c; }
+.exec-priority.sev-alta{ border-left-color:#e8a33d; }
+.exec-priority.sev-media{ border-left-color:#D4AF37; }
+
+.exec-recommendation h3{
+    color:#D4AF37;
+    margin-top:12px;
+    font-size:22px;
+}
+
+.exec-recommendation p{
+    color:#d7dde4;
+    margin-top:8px;
+    line-height:1.6;
 }

@@ -8,21 +8,24 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/app/autoload.php';
 
+use App\Controllers\AdministrationController;
 use App\Controllers\AIController;
 use App\Controllers\AnswerController;
 use App\Controllers\AuthController;
 use App\Controllers\BranchController;
 use App\Controllers\CandidateController;
 use App\Controllers\CompanyController;
-use App\Controllers\DashboardController;
 use App\Controllers\DepartmentController;
 use App\Controllers\EmployeeController;
+use App\Controllers\ExecutiveDashboardController;
+use App\Controllers\HistoryController;
 use App\Controllers\IndicatorController;
 use App\Controllers\JobController;
 use App\Controllers\LaboratoryController;
 use App\Controllers\OIEController;
 use App\Controllers\PositionController;
 use App\Controllers\QuestionController;
+use App\Controllers\ReportController;
 use App\Controllers\SurveyController;
 use App\Controllers\SurveyQuestionController;
 use App\Controllers\TeamController;
@@ -46,7 +49,28 @@ switch ($path) {
         break;
 
     case '/dashboard':
-        echo (new DashboardController())->index();
+        echo (new ExecutiveDashboardController())->index();
+        break;
+
+    // ADMINISTRAÇÃO
+    case '/administration':
+        echo (new AdministrationController())->index();
+        break;
+
+    // HISTÓRICO
+    case '/history':
+        echo (new HistoryController())->index();
+        break;
+
+    // RELATÓRIOS
+    case '/reports':
+        echo (new ReportController())->index();
+        break;
+
+    case '/reports/generate':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            echo (new ReportController())->generate();
+        }
         break;
 
     // USUÁRIOS

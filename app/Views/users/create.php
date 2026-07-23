@@ -25,48 +25,7 @@
 
         <h2><?= APP_NAME ?></h2>
 
-        <nav>
-
-            <a href="<?= BASE_URL ?>/dashboard">Dashboard</a>
-
-            <a class="active" href="<?= BASE_URL ?>/users">Usuários</a>
-
-            <a href="<?= BASE_URL ?>/companies">Empresas</a>
-
-            <a href="<?= BASE_URL ?>/branches">Filiais</a>
-            <a href="<?= BASE_URL ?>/departments">Setores</a>
-            <a href="<?= BASE_URL ?>/teams">Equipes</a>
-            <a href="<?= BASE_URL ?>/positions">Cargos</a>
-            <a href="<?= BASE_URL ?>/employees">Colaboradores</a>
-            <a href="<?= BASE_URL ?>/jobs">Vagas</a>
-
-            <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
-
-            <a href="<?= BASE_URL ?>/surveys">Pesquisas</a>
-
-            <a href="<?= BASE_URL ?>/questions">Perguntas</a>
-
-            <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
-
-            <a href="<?= BASE_URL ?>/answers">Respostas</a>
-
-            <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
-
-            <a href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a>
-
-            <a href="<?= BASE_URL ?>/oie">OIE</a>
-
-            <a href="<?= BASE_URL ?>/ai">Inteligência Artificial</a>
-
-            <a href="#">Avaliações</a>
-
-            <a href="#">Relatórios</a>
-
-            <a href="#">Configurações</a>
-
-            <a href="<?= BASE_URL ?>/logout">Sair</a>
-
-        </nav>
+<?php $activeNav = 'administration'; require __DIR__ . '/../partials/nav.php'; ?>
 
     </aside>
 

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Análise Gerada - <?= APP_NAME ?></title>
+    <title>Relatório - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -22,9 +22,9 @@
             <span>P</span>
         </div>
 
-        <h2>Pulsar RH</h2>
+        <h2><?= APP_NAME ?></h2>
 
-<?php $activeNav = 'administration'; require __DIR__ . '/../partials/nav.php'; ?>
+<?php $activeNav = 'reports'; require __DIR__ . '/../partials/nav.php'; ?>
 
     </aside>
 
@@ -32,9 +32,9 @@
 
         <div class="page-header">
 
-            <h1>Análise: <?= htmlspecialchars($survey['title'] ?? '') ?></h1>
+            <h1>Relatório: <?= htmlspecialchars($survey['title'] ?? '') ?></h1>
 
-            <a class="btn-primary" href="<?= BASE_URL ?>/ai">
+            <a class="btn-primary" href="<?= BASE_URL ?>/reports">
                 ← Voltar
             </a>
 
@@ -45,24 +45,6 @@
             <p><?= htmlspecialchars($result['error']) ?></p>
 
         <?php else: ?>
-
-            <p>
-                Provedor: <strong><?= htmlspecialchars($result['provider']) ?></strong>
-                &nbsp;|&nbsp;
-                Modelo: <strong><?= htmlspecialchars($result['model']) ?></strong>
-                &nbsp;|&nbsp;
-                Tempo de resposta: <strong><?= $result['duration_ms'] ?> ms</strong>
-                &nbsp;|&nbsp;
-                Custo estimado: <strong>$<?= number_format($result['estimated_cost'], 6) ?></strong>
-            </p>
-
-            <?php if (!$result['validation']['valid']): ?>
-                <p>
-                    ⚠️ A resposta original não passou na validação
-                    (<?= htmlspecialchars(implode('; ', $result['validation']['errors'])) ?>)
-                    e o sistema utilizou o fallback baseado em regras do OIE.
-                </p>
-            <?php endif; ?>
 
             <div class="card">
 
@@ -131,10 +113,6 @@
                 <?php endif; ?>
 
             </div>
-
-            <?php if ($result['ai_report_id']): ?>
-                <p>✅ Relatório salvo (ai_reports #<?= $result['ai_report_id'] ?>).</p>
-            <?php endif; ?>
 
         <?php endif; ?>
 
