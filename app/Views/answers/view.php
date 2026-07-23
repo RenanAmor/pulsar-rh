@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Respostas do Colaborador - <?= APP_NAME ?></title>
+    <title>Respostas do Colaborador | <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -22,13 +22,21 @@
             <span>P</span>
         </div>
 
-        <h2>Pulsar RH</h2>
+        <h2><?= APP_NAME ?></h2>
 
 <?php $activeNav = 'administration'; require __DIR__ . '/../partials/nav.php'; ?>
 
     </aside>
 
     <main class="content">
+
+        <?php $breadcrumb = [
+            ['label' => 'Administração', 'href' => BASE_URL . '/administration'],
+            ['label' => 'Pesquisas'],
+            ['label' => 'Respostas', 'href' => BASE_URL . '/answers'],
+            ['label' => 'Respondentes', 'href' => BASE_URL . '/answers/respondents?survey_id=' . $survey["id"]],
+            ['label' => 'Respostas do Colaborador'],
+        ]; require __DIR__ . '/../partials/breadcrumb.php'; ?>
 
         <div class="page-header">
 

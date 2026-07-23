@@ -35,58 +35,62 @@
             <p>Cadastros e configurações do sistema, <strong><?= htmlspecialchars($user['name']) ?></strong>.</p>
         </header>
 
-        <div class="card">
+        <div class="admin-groups">
 
-            <h2>Estrutura Organizacional</h2>
+            <div class="card admin-group">
 
-            <ul>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/companies">Empresas</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/branches">Filiais</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/departments">Setores</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/teams">Equipes</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/positions">Cargos</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/employees">Colaboradores</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/users">Usuários</a></li>
-            </ul>
+                <h2>🏢 Organização</h2>
+                <p>Estrutura societária e de pessoas da empresa.</p>
 
-        </div>
+                <ul>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/companies">Empresas</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/branches">Filiais</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/departments">Setores</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/teams">Equipes</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/positions">Cargos</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/employees">Colaboradores</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/users">Usuários</a></li>
+                </ul>
 
-        <div class="card">
+            </div>
 
-            <h2>Recrutamento &amp; Seleção</h2>
+            <div class="card admin-group">
 
-            <ul>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/jobs">Vagas</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/candidates">Candidatos</a></li>
-            </ul>
+                <h2>🎯 Recrutamento &amp; Seleção</h2>
+                <p>Vagas abertas e candidatos em processo seletivo.</p>
 
-        </div>
+                <ul>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/jobs">Vagas</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/candidates">Candidatos</a></li>
+                </ul>
 
-        <div class="card">
+            </div>
 
-            <h2>Pesquisas &amp; Respostas</h2>
+            <div class="card admin-group">
 
-            <ul>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/surveys">Pesquisas</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/questions">Perguntas</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/answers">Respostas</a></li>
-            </ul>
+                <h2>📋 Pesquisas</h2>
+                <p>Conteúdo e respostas das pesquisas organizacionais.</p>
 
-        </div>
+                <ul>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/questions">Biblioteca Psicométrica</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/surveys">Pesquisas</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/answers">Respostas</a></li>
+                </ul>
 
-        <div class="card">
+            </div>
 
-            <h2>Motor de Inteligência (acesso técnico)</h2>
+            <div class="card admin-group">
 
-            <p>Telas detalhadas do Motor de Indicadores, do OIE e da configuração de provedores de IA, para uso técnico e de validação.</p>
+                <h2>⚙️ Sistema</h2>
+                <p>Ferramentas técnicas de apoio e configuração.</p>
 
-            <ul>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/indicators">Indicadores (detalhado)</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/oie">OIE (detalhado)</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/ai">Inteligência Artificial (provedores)</a></li>
-                <li><a class="btn-primary" href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a></li>
-            </ul>
+                <ul>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a></li>
+                    <li><a class="btn-primary" href="<?= BASE_URL ?>/ai">Inteligência Artificial</a></li>
+                </ul>
+
+            </div>
 
         </div>
 

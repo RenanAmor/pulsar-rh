@@ -22,13 +22,20 @@
             <span>P</span>
         </div>
 
-        <h2>Pulsar RH</h2>
+        <h2><?= APP_NAME ?></h2>
 
 <?php $activeNav = 'administration'; require __DIR__ . '/../partials/nav.php'; ?>
 
     </aside>
 
     <main class="content">
+
+        <?php $breadcrumb = [
+            ['label' => 'Administração', 'href' => BASE_URL . '/administration'],
+            ['label' => 'Recrutamento & Seleção'],
+            ['label' => 'Candidatos', 'href' => BASE_URL . '/candidates'],
+            ['label' => 'Novo Candidato'],
+        ]; require __DIR__ . '/../partials/breadcrumb.php'; ?>
 
         <div class="page-header">
 

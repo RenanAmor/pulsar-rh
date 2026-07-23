@@ -31,6 +31,13 @@
 
     <main class="content">
 
+        <?php $breadcrumb = [
+            ['label' => 'Administração', 'href' => BASE_URL . '/administration'],
+            ['label' => 'Organização'],
+            ['label' => 'Usuários', 'href' => BASE_URL . '/users'],
+            ['label' => 'Novo Usuário'],
+        ]; require __DIR__ . '/../partials/breadcrumb.php'; ?>
+
         <header>
 
             <h1>Novo Usuário</h1>
