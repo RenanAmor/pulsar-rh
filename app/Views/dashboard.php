@@ -59,6 +59,8 @@
 
             <a href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a>
 
+            <a href="<?= BASE_URL ?>/oie">OIE</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>
@@ -222,6 +224,25 @@
 
             <a class="btn-primary" href="<?= BASE_URL ?>/laboratory">
                 Abrir Laboratório
+            </a>
+
+        </section>
+
+        <section class="card">
+
+            <h2>Organizational Intelligence Engine (OIE)</h2>
+
+            <p>
+                O OIE interpreta os indicadores do Motor de Indicadores,
+                identifica padrões, tendências e riscos organizacionais
+                (turnover, burnout, baixa liderança, baixa comunicação,
+                baixo engajamento, conflitos, queda de clima e perda de
+                satisfação) e produz recomendações — tudo por regras de
+                negócio, sem uso de Inteligência Artificial nesta etapa.
+            </p>
+
+            <a class="btn-primary" href="<?= BASE_URL ?>/oie">
+                Abrir OIE
             </a>
 
         </section>

@@ -42,6 +42,7 @@
             <a href="<?= BASE_URL ?>/answers">Respostas</a>
             <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
             <a class="active" href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a>
+            <a href="<?= BASE_URL ?>/oie">OIE</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
 
         </nav>

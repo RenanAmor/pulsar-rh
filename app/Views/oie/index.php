@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Indicadores Organizacionais - <?= APP_NAME ?></title>
+    <title>OIE - <?= APP_NAME ?></title>
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 
@@ -40,9 +40,9 @@
             <a href="<?= BASE_URL ?>/questions">Perguntas</a>
             <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
             <a href="<?= BASE_URL ?>/answers">Respostas</a>
-            <a class="active" href="<?= BASE_URL ?>/indicators">Indicadores</a>
+            <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
             <a href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a>
-            <a href="<?= BASE_URL ?>/oie">OIE</a>
+            <a class="active" href="<?= BASE_URL ?>/oie">OIE</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
 
         </nav>
@@ -53,13 +53,15 @@
 
         <div class="page-header">
 
-            <h1>Indicadores Organizacionais</h1>
+            <h1>Organizational Intelligence Engine</h1>
 
         </div>
 
         <p>
-            Selecione uma pesquisa para calcular os indicadores a partir
-            das respostas registradas.
+            Selecione uma pesquisa para que o OIE interprete os indicadores
+            calculados pelo Motor de Indicadores, identifique padrões,
+            riscos e produza recomendações baseadas em regras de negócio
+            (sem uso de Inteligência Artificial nesta etapa).
         </p>
 
         <table class="table">
@@ -88,8 +90,8 @@
                     <td>
 
                         <a class="btn-action edit"
-                           href="<?= BASE_URL ?>/indicators/show?survey_id=<?= $survey['id'] ?>">
-                            📊 Calcular
+                           href="<?= BASE_URL ?>/oie/show?survey_id=<?= $survey['id'] ?>">
+                            🧠 Analisar
                         </a>
 
                     </td>

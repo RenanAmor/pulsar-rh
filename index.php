@@ -19,6 +19,7 @@ use App\Controllers\EmployeeController;
 use App\Controllers\IndicatorController;
 use App\Controllers\JobController;
 use App\Controllers\LaboratoryController;
+use App\Controllers\OIEController;
 use App\Controllers\PositionController;
 use App\Controllers\QuestionController;
 use App\Controllers\SurveyController;
@@ -428,6 +429,15 @@ switch ($path) {
 
     case '/laboratory/clear':
         (new LaboratoryController())->clear();
+        break;
+
+    // ORGANIZATIONAL INTELLIGENCE ENGINE (OIE)
+    case '/oie':
+        echo (new OIEController())->index();
+        break;
+
+    case '/oie/show':
+        echo (new OIEController())->show();
         break;
 
     // LOGOUT

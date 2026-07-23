@@ -54,6 +54,8 @@
 
             <a href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a>
 
+            <a href="<?= BASE_URL ?>/oie">OIE</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>
