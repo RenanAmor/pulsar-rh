@@ -20,6 +20,7 @@ use App\Controllers\EmployeeController;
 use App\Controllers\ExecutiveDashboardController;
 use App\Controllers\HistoryController;
 use App\Controllers\IndicatorController;
+use App\Controllers\IntelligenceCenterController;
 use App\Controllers\JobController;
 use App\Controllers\LaboratoryController;
 use App\Controllers\OIEController;
@@ -463,6 +464,27 @@ switch ($path) {
 
     case '/oie/show':
         echo (new OIEController())->show();
+        break;
+
+    // CENTRO DE INTELIGÊNCIA ORGANIZACIONAL
+    case '/intelligence':
+        echo (new IntelligenceCenterController())->situation();
+        break;
+
+    case '/intelligence/changes':
+        echo (new IntelligenceCenterController())->changes();
+        break;
+
+    case '/intelligence/alerts':
+        echo (new IntelligenceCenterController())->alerts();
+        break;
+
+    case '/intelligence/recommendations':
+        echo (new IntelligenceCenterController())->recommendations();
+        break;
+
+    case '/intelligence/evolution':
+        echo (new IntelligenceCenterController())->evolution();
         break;
 
     // INTELIGÊNCIA ARTIFICIAL

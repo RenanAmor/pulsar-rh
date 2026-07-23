@@ -620,3 +620,267 @@ select option{
     font-size:14px;
     margin-bottom:15px;
 }
+
+/* ===========================================================
+   CENTRO DE INTELIGÊNCIA ORGANIZACIONAL
+=========================================================== */
+
+.intel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.intel-eyebrow{
+    color:#D4AF37;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-size:12px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.intel-header h1{
+    color:#fff;
+    font-size:34px;
+}
+
+.intel-meta{
+    color:#c9d2da;
+    margin-top:6px;
+}
+
+.intel-score-badge{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    padding:16px 26px;
+    border-radius:16px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    border-left:6px solid #D4AF37;
+}
+
+.intel-score-badge strong{
+    font-size:38px;
+    line-height:1;
+    color:#D4AF37;
+}
+
+.intel-score-badge span{
+    color:#c9d2da;
+    margin-top:6px;
+}
+
+.intel-score-badge.tier-excelente{ border-left-color:#3fb950; }
+.intel-score-badge.tier-excelente strong{ color:#3fb950; }
+
+.intel-score-badge.tier-saudavel{ border-left-color:#D4AF37; }
+.intel-score-badge.tier-saudavel strong{ color:#D4AF37; }
+
+.intel-score-badge.tier-atencao{ border-left-color:#e8a33d; }
+.intel-score-badge.tier-atencao strong{ color:#e8a33d; }
+
+.intel-score-badge.tier-critico{ border-left-color:#e74c3c; }
+.intel-score-badge.tier-critico strong{ color:#e74c3c; }
+
+.intel-subnav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:25px;
+    padding-bottom:15px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.intel-subnav a{
+    text-decoration:none;
+    color:#c9d2da;
+    padding:10px 18px;
+    border-radius:999px;
+    font-weight:500;
+    transition:.25s;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.intel-subnav a:hover{
+    border-color:#D4AF37;
+    color:#fff;
+}
+
+.intel-subnav a.active{
+    background:#D4AF37;
+    color:#111;
+    border-color:#D4AF37;
+}
+
+.intel-summary p{
+    color:#d7dde4;
+    font-size:18px;
+    line-height:1.7;
+    margin-top:10px;
+}
+
+.intel-company-card h2{
+    font-size:26px;
+}
+
+.intel-link-card{
+    text-decoration:none;
+    display:block;
+}
+
+.change-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:15px;
+}
+
+.change-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:14px 18px;
+    background:rgba(255,255,255,.04);
+    border-radius:12px;
+}
+
+.change-arrow{
+    font-size:22px;
+    font-weight:700;
+    width:28px;
+    text-align:center;
+}
+
+.change-arrow.up{ color:#3fb950; }
+.change-arrow.down{ color:#e74c3c; }
+
+.change-label{
+    flex:1;
+    color:#fff;
+    font-weight:500;
+}
+
+.change-intensity{
+    color:#c9d2da;
+    font-size:14px;
+}
+
+.alert-cards, .rec-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.alert-card, .rec-card{
+    border-left:6px solid #c9d2da;
+}
+
+.alert-card.sev-critica, .rec-card.sev-critica{ border-left-color:#e74c3c; }
+.alert-card.sev-alta, .rec-card.sev-alta{ border-left-color:#e8a33d; }
+.alert-card.sev-media, .rec-card.sev-media{ border-left-color:#D4AF37; }
+
+.alert-card-head, .rec-card-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.alert-card-head h2{
+    color:#fff;
+    font-size:20px;
+}
+
+.rec-rank{
+    color:#D4AF37;
+    font-weight:700;
+    font-size:18px;
+}
+
+.badge-severity{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    white-space:nowrap;
+    background:rgba(201,210,218,.15);
+    color:#c9d2da;
+}
+
+.badge-severity.sev-critica{ background:rgba(231,76,60,.18); color:#e74c3c; }
+.badge-severity.sev-alta{ background:rgba(232,163,61,.18); color:#e8a33d; }
+.badge-severity.sev-media{ background:rgba(212,175,55,.18); color:#D4AF37; }
+
+.alert-card-meta{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.alert-card-meta dt{
+    color:#c9d2da;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:4px;
+}
+
+.alert-card-meta dd{
+    color:#fff;
+    font-weight:500;
+}
+
+.alert-card-impact, .rec-reason, .rec-impact{
+    color:#d7dde4;
+    line-height:1.6;
+    margin-top:8px;
+}
+
+.rec-card h2{
+    color:#fff;
+    font-size:22px;
+    margin-bottom:6px;
+}
+
+.scope-filter{
+    display:flex;
+    gap:15px;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.scope-filter select{
+    flex:1;
+    min-width:260px;
+    margin-bottom:0;
+}
+
+.scope-filter .btn-primary{
+    height:56px;
+    display:flex;
+    align-items:center;
+}
+
+@media(max-width:900px){
+
+.intel-header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.intel-score-badge{
+    align-items:flex-start;
+}
+
+}
