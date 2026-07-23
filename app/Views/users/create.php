@@ -56,6 +56,8 @@
 
             <a href="<?= BASE_URL ?>/oie">OIE</a>
 
+            <a href="<?= BASE_URL ?>/ai">Inteligência Artificial</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>

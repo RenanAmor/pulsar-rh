@@ -61,6 +61,8 @@
 
             <a href="<?= BASE_URL ?>/oie">OIE</a>
 
+            <a href="<?= BASE_URL ?>/ai">Inteligência Artificial</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>
@@ -243,6 +245,24 @@
 
             <a class="btn-primary" href="<?= BASE_URL ?>/oie">
                 Abrir OIE
+            </a>
+
+        </section>
+
+        <section class="card">
+
+            <h2>Inteligência Artificial</h2>
+
+            <p>
+                A IA apenas interpreta o contexto já construído pelo OIE
+                (indicadores, tendências, riscos e recomendações) e nunca
+                recalcula nada. Sem provedor configurado, o sistema
+                continua funcionando normalmente usando somente as regras
+                do OIE.
+            </p>
+
+            <a class="btn-primary" href="<?= BASE_URL ?>/ai">
+                Abrir IA
             </a>
 
         </section>

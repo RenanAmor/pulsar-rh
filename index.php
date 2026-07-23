@@ -8,6 +8,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/app/autoload.php';
 
+use App\Controllers\AIController;
 use App\Controllers\AnswerController;
 use App\Controllers\AuthController;
 use App\Controllers\BranchController;
@@ -438,6 +439,17 @@ switch ($path) {
 
     case '/oie/show':
         echo (new OIEController())->show();
+        break;
+
+    // INTELIGÊNCIA ARTIFICIAL
+    case '/ai':
+        echo (new AIController())->index();
+        break;
+
+    case '/ai/generate':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            echo (new AIController())->generate();
+        }
         break;
 
     // LOGOUT
