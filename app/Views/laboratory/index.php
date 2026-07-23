@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laboratório Organizacional - <?= APP_NAME ?></title>
+
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span>P</span>
+        </div>
+
+        <h2>Pulsar RH</h2>
+
+        <nav>
+
+            <a href="<?= BASE_URL ?>/dashboard">Dashboard</a>
+            <a href="<?= BASE_URL ?>/users">Usuários</a>
+            <a href="<?= BASE_URL ?>/companies">Empresas</a>
+            <a href="<?= BASE_URL ?>/branches">Filiais</a>
+            <a href="<?= BASE_URL ?>/departments">Setores</a>
+            <a href="<?= BASE_URL ?>/teams">Equipes</a>
+            <a href="<?= BASE_URL ?>/positions">Cargos</a>
+            <a href="<?= BASE_URL ?>/employees">Colaboradores</a>
+            <a href="<?= BASE_URL ?>/jobs">Vagas</a>
+            <a href="<?= BASE_URL ?>/candidates">Candidatos</a>
+            <a href="<?= BASE_URL ?>/surveys">Pesquisas</a>
+            <a href="<?= BASE_URL ?>/questions">Perguntas</a>
+            <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
+            <a href="<?= BASE_URL ?>/answers">Respostas</a>
+            <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
+            <a class="active" href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a>
+            <a href="<?= BASE_URL ?>/logout">Sair</a>
+
+        </nav>
+
+    </aside>
+
+    <main class="content">
+
+        <div class="page-header">
+
+            <h1>Laboratório Organizacional</h1>
+
+        </div>
+
+        <p>
+            Gere ambientes organizacionais sintéticos completos (empresa,
+            filial, setores, equipes, cargos, colaboradores, pesquisas e
+            respostas) para testes, demonstrações e validação do Motor de
+            Indicadores. Nenhum dado real é utilizado.
+        </p>
+
+        <div class="card">
+
+            <h2>Gerar Ambiente</h2>
+
+            <form method="POST" action="<?= BASE_URL ?>/laboratory/generate">
+
+                <label>Cenário</label>
+                <select name="scenario" required>
+                    <?php foreach ($scenarios as $key => $label): ?>
+                        <option value="<?= $key ?>"><?= htmlspecialchars($label) ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+                <label>Quantidade de Colaboradores</label>
+                <input type="number" name="employees_count" value="20" min="1" max="500" required>
+
+                <label>Quantidade de Pesquisas</label>
+                <input type="number" name="surveys_count" value="1" min="1" max="20" required>
+
+                <label>Quantidade de Respondentes por Pesquisa</label>
+                <input type="number" name="respondents_count" value="20" min="1" max="500" required>
+
+                <button type="submit">
+                    Gerar Ambiente
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Ambientes Gerados</h2>
+
+            <?php if (empty($generatedCompanies)): ?>
+
+                <p>Nenhum ambiente sintético foi gerado ainda.</p>
+
+            <?php else: ?>
+
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th>Empresa</th>
+                            <th>Cidade/UF</th>
+                            <th width="160">Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <?php foreach ($generatedCompanies as $company): ?>
+
+                        <tr>
+
+                            <td><?= htmlspecialchars($company['trade_name']) ?></td>
+                            <td><?= htmlspecialchars($company['city'] ?? '') ?> / <?= htmlspecialchars($company['state'] ?? '') ?></td>
+
+                            <td>
+
+                                <a class="btn-action delete"
+                                   href="<?= BASE_URL ?>/laboratory/clear?company_id=<?= $company['id'] ?>"
+                                   onclick="return confirm('Isso vai apagar permanentemente esta empresa sintética e todos os dados vinculados (filiais, setores, colaboradores, pesquisas e respostas). Continuar?')">
+                                    🗑️ Limpar Ambiente
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    <?php endforeach; ?>
+
+                    </tbody>
+
+                </table>
+
+            <?php endif; ?>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

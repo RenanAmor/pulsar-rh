@@ -18,6 +18,7 @@ use App\Controllers\DepartmentController;
 use App\Controllers\EmployeeController;
 use App\Controllers\IndicatorController;
 use App\Controllers\JobController;
+use App\Controllers\LaboratoryController;
 use App\Controllers\PositionController;
 use App\Controllers\QuestionController;
 use App\Controllers\SurveyController;
@@ -412,6 +413,21 @@ switch ($path) {
 
     case '/indicators/show':
         echo (new IndicatorController())->show();
+        break;
+
+    // LABORATÓRIO ORGANIZACIONAL
+    case '/laboratory':
+        echo (new LaboratoryController())->index();
+        break;
+
+    case '/laboratory/generate':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            echo (new LaboratoryController())->generate();
+        }
+        break;
+
+    case '/laboratory/clear':
+        (new LaboratoryController())->clear();
         break;
 
     // LOGOUT

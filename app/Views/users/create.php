@@ -52,6 +52,8 @@
 
             <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
 
+            <a href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>

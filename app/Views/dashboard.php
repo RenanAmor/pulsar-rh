@@ -57,6 +57,8 @@
 
             <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
 
+            <a href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a>
+
             <a href="#">Avaliações</a>
 
             <a href="#">Relatórios</a>
@@ -204,6 +206,22 @@
 
             <a class="btn-primary" href="<?= BASE_URL ?>/indicators">
                 Ver Indicadores
+            </a>
+
+        </section>
+
+        <section class="card">
+
+            <h2>Laboratório Organizacional</h2>
+
+            <p>
+                Gere ambientes sintéticos completos (empresa, colaboradores,
+                pesquisas e respostas coerentes com cenários pré-definidos)
+                para testar e validar o Motor de Indicadores sem usar dados reais.
+            </p>
+
+            <a class="btn-primary" href="<?= BASE_URL ?>/laboratory">
+                Abrir Laboratório
             </a>
 
         </section>

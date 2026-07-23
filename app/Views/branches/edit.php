@@ -41,6 +41,7 @@
             <a href="<?= BASE_URL ?>/survey-questions">Montagem de Pesquisas</a>
             <a href="<?= BASE_URL ?>/answers">Respostas</a>
             <a href="<?= BASE_URL ?>/indicators">Indicadores</a>
+            <a href="<?= BASE_URL ?>/laboratory">Laboratório Organizacional</a>
             <a href="<?= BASE_URL ?>/logout">Sair</a>
 
         </nav>
